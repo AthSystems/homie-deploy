@@ -139,6 +139,17 @@ export default function TransactionsPage() {
 
     const hasActiveFilters = Object.keys(filters).length > 0;
 
+    // Calculate paginated data for footer
+    const paginatedTransactions = useMemo(() => {
+        const startIndex = (page - 1) * pageSize;
+        return transactions.slice(startIndex, startIndex + pageSize);
+    }, [transactions, page, pageSize]);
+
+    // Calculate sum of amounts on current page
+    const pageAmountSum = useMemo(() => {
+        return paginatedTransactions.reduce((sum, tx) => sum + tx.amount, 0);
+    }, [paginatedTransactions]);
+
     const formatAmount = (amount: number, type: TransactionType) => {
         const formatted = Math.abs(amount).toFixed(2);
         const color =
@@ -507,6 +518,19 @@ export default function TransactionsPage() {
                                 </div>
                             </div>
                         )}
+                    </div>
+                }
+                footerComponent={
+                    <div className="flex items-center justify-between px-6 py-3 bg-gray-50 dark:bg-gray-900">
+                        <div className="text-sm text-gray-600 dark:text-gray-400">
+                            Showing {paginatedTransactions.length} of {transactions.length} transactions
+                        </div>
+                        <div className="text-sm font-medium">
+                            <span className="text-gray-600 dark:text-gray-400 mr-2">Page Total:</span>
+                            <span className={pageAmountSum >= 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}>
+                                {pageAmountSum >= 0 ? "+" : ""}{pageAmountSum.toFixed(2)}
+                            </span>
+                        </div>
                     </div>
                 }
             />

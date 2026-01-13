@@ -25,6 +25,9 @@ export interface DataTableProps<T> {
   // Filtering
   filterComponent?: ReactNode;
 
+  // Footer (receives paginated data)
+  footerComponent?: ReactNode;
+
   // Styling
   maxHeight?: string;
   rowClassName?: (row: T) => string;
@@ -42,6 +45,7 @@ export function DataTable<T>({
   currentPage: externalPage,
   onPageChange,
   filterComponent,
+  footerComponent,
   maxHeight = "600px",
   rowClassName,
   containerClassName = "",
@@ -158,6 +162,12 @@ export function DataTable<T>({
                 </tbody>
               </table>
             </div>
+
+            {footerComponent && (
+              <div className="border-t border-gray-200 dark:border-gray-700">
+                {footerComponent}
+              </div>
+            )}
           </>
         )}
       </div>
