@@ -1,0 +1,106 @@
+{
+  "version": "1.0",
+  "description": "Account transfer constraints - defines which accounts can transfer to which accounts",
+  "constraints": {
+    "xxx-xxx xx1842": {
+      "name": "Common Account Westpac",
+      "canReceiveFrom": [
+        "xxx-xxx xxxxx4442",
+        "xxx-xxx xxxxx4459",
+        "xxx-xxx xx9212",
+        "xxx-xxx xx9637",
+        "xxx-xxx xxxxx5706",
+        "xxx-xxx xxxx7894",
+        "xxx-xxx xxxx3987"
+      ]
+    },
+    "xxx-xxx xxxxx5706": {
+      "name": "Transit Account MQB",
+      "canReceiveFrom": [
+        "xxx-xxx xxxxx1161",
+        "xxx-xxx xx1842"
+      ]
+    },
+    "xxx-xxx xxxxx1161": {
+      "name": "Securities Account MQB",
+      "canReceiveFrom": [
+        "xxx-xxx xxxxx5706"
+      ]
+    },
+    "xxx-xxx xxxxx4442": {
+      "name": "Jude Everyday MQB",
+      "canReceiveFrom": [
+        "xxx-xxx xxxx7894",
+        "xxx-xxx xxxx3987",
+        "xxx-xxx xxxxx4459",
+        "xxx-xxx xx9212",
+        "xxx-xxx xx9637",
+        "xxx-xxx xx1842"
+      ]
+    },
+    "xxx-xxx xxxxx4459": {
+      "name": "Jude Saving MQB",
+      "canReceiveFrom": [
+        "xxx-xxx xxxxx4442",
+        "xxx-xxx xx9212",
+        "xxx-xxx xx9637",
+        "xxx-xxx xxxx7894",
+        "xxx-xxx xxxx3987",
+        "xxx-xxx xx1842"
+      ]
+    },
+    "xxx-xxx xx9212": {
+      "name": "Jude Everyday Westpac",
+      "canReceiveFrom": [
+        "xxx-xxx xxxxx4442",
+        "xxx-xxx xxxxx4459",
+        "xxx-xxx xx9637",
+        "xxx-xxx xxxx7894",
+        "xxx-xxx xxxx3987",
+        "xxx-xxx xx1842"
+      ]
+    },
+    "xxx-xxx xx9637": {
+      "name": "Jude Saving Westpac",
+      "canReceiveFrom": [
+        "xxx-xxx xxxxx4442",
+        "xxx-xxx xxxxx4459",
+        "xxx-xxx xx9212",
+        "xxx-xxx xxxx7894",
+        "xxx-xxx xxxx3987",
+        "xxx-xxx xx1842"
+      ]
+    },
+    "xxx-xxx xxxx7894": {
+      "name": "Manon Everyday CMB",
+      "canReceiveFrom": [
+        "xxx-xxx xxxxx4442",
+        "xxx-xxx xxxxx4459",
+        "xxx-xxx xx9212",
+        "xxx-xxx xx9637",
+        "xxx-xxx xxxx3987",
+        "xxx-xxx xxxx5739",
+        "xxx-xxx xx1842"
+      ]
+    },
+    "xxx-xxx xxxx3987": {
+      "name": "Manon Saving CMB",
+      "canReceiveFrom": [
+        "xxx-xxx xxxxx4442",
+        "xxx-xxx xxxxx4459",
+        "xxx-xxx xx9212",
+        "xxx-xxx xx9637",
+        "xxx-xxx xxxx7894",
+        "xxx-xxx xx1842",
+        "xxx-xxx xxxx5739"
+      ]
+    },
+    "xxx-xxx xxxx5739": {
+      "name": "Manon Travel Card CMB",
+      "canReceiveFrom": [
+        "xxx-xxx xxxx7894",
+        "xxx-xxx xxxx3987"
+      ]
+    }
+  }
+}

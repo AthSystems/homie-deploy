@@ -1,0 +1,206 @@
+{
+  "version": "1.0",
+  "description": "Transfer pairing rules for account matching and categorization",
+  "rules": [
+    {
+      "id": "jude-to-saving-regex",
+      "subcategory": "Jude → Jude Saving",
+      "type": "REGEX",
+      "accountFrom": "xxx-xxx xxxxx4442",
+      "clauses": {
+        "mandatory": ["to linked account xx4459"],
+        "optional": ["savings", "internal", "transfer"],
+        "forbidden": [],
+        "min": 1
+      }
+    },
+    {
+      "id": "jude-from-saving-regex",
+      "subcategory": "Jude → Jude Saving",
+      "type": "REGEX",
+      "accountFrom": "xxx-xxx xxxxx4459",
+      "clauses": {
+        "mandatory": ["from linked account xx4442"],
+        "optional": ["savings", "internal", "transfer"],
+        "forbidden": [],
+        "min": 1
+      }
+    },
+    {
+      "id": "saving-to-jude-regex",
+      "subcategory": "Jude Saving → Jude",
+      "type": "REGEX",
+      "accountFrom": "xxx-xxx xxxxx4442",
+      "clauses": {
+        "mandatory": ["from linked account xx4459"],
+        "optional": ["internal", "transfer"],
+        "forbidden": [],
+        "min": 1
+      }
+    },
+    {
+      "id": "saving-from-jude-regex",
+      "subcategory": "Jude Saving → Jude",
+      "type": "REGEX",
+      "accountFrom": "xxx-xxx xxxxx4459",
+      "clauses": {
+        "mandatory": ["to linked account xx4442"],
+        "optional": ["internal", "transfer"],
+        "forbidden": [],
+        "min": 1
+      }
+    },
+    {
+      "id": "jude-personal-to-mqb",
+      "subcategory": "Jude ↔ Jude",
+      "type": "REGEX",
+      "accountFrom": "xxx-xxx xx9212",
+      "clauses": {
+        "mandatory": ["WITHDRAWAL-OSKO PAYMENT"],
+        "optional": ["Jude Personal", "Judicael Leynaud"],
+        "forbidden": [],
+        "min": 1
+      }
+    },
+    {
+      "id": "mqb-to-jude-personal",
+      "subcategory": "Jude ↔ Jude",
+      "type": "REGEX",
+      "accountFrom": "xxx-xxx xxxxx4442",
+      "clauses": {
+        "mandatory": ["From JUDICAEL LEYNAUD"],
+        "optional": ["Jude Personal", "MQB Savings"],
+        "forbidden": [],
+        "min": 1
+      }
+    },
+    {
+      "id": "transit-to-securities-regex",
+      "subcategory": "Transit → Securities",
+      "type": "REGEX",
+      "accountFrom": "xxx-xxx xxxxx1161",
+      "clauses": {
+        "mandatory": ["From linked account xx5706"],
+        "optional": ["Securities Funding"],
+        "forbidden": [],
+        "min": 1
+      }
+    },
+    {
+      "id": "securities-to-transit-regex",
+      "subcategory": "Transit → Securities",
+      "type": "REGEX",
+      "accountFrom": "xxx-xxx xxxxx5706",
+      "clauses": {
+        "mandatory": ["To linked account xx1161"],
+        "optional": ["Securities Funding"],
+        "forbidden": [],
+        "min": 1
+      }
+    },
+    {
+      "id": "common-to-transit-osko",
+      "subcategory": "Common → Transit",
+      "type": "REGEX",
+      "accountFrom": "xxx-xxx xx1842",
+      "clauses": {
+        "mandatory": ["WITHDRAWAL-OSKO PAYMENT"],
+        "optional": ["Judicael LEYNAUD", "Transit Share"],
+        "forbidden": [],
+        "min": 1
+      }
+    },
+    {
+      "id": "transit-from-common",
+      "subcategory": "Common → Transit",
+      "type": "REGEX",
+      "accountFrom": "xxx-xxx xxxxx5706",
+      "clauses": {
+        "mandatory": ["From JUDICAEL LEYNAUD"],
+        "optional": ["Transit Share"],
+        "forbidden": [],
+        "min": 1
+      }
+    },
+    {
+      "id": "common-to-manon-osko",
+      "subcategory": "Common → Manon",
+      "type": "REGEX",
+      "accountFrom": "xxx-xxx xx1842",
+      "clauses": {
+        "mandatory": ["WITHDRAWAL-OSKO PAYMENT Manon Guyot"],
+        "optional": ["Pocket", "waiver"],
+        "forbidden": [],
+        "min": 1
+      }
+    },
+    {
+      "id": "manon-from-common",
+      "subcategory": "Common → Manon",
+      "type": "REGEX",
+      "accountFrom": "xxx-xxx xxxx7894",
+      "clauses": {
+        "mandatory": ["Fast Transfer From JUDICAEL LEYNAUD"],
+        "optional": ["Pocket", "waiver"],
+        "forbidden": [],
+        "min": 1
+      }
+    },
+    {
+      "id": "jude-to-saving-account",
+      "subcategory": "Jude → Jude Saving",
+      "type": "ACCOUNT",
+      "accountFrom": "xxx-xxx xxxxx4442",
+      "accountTo": "xxx-xxx xxxxx4459"
+    },
+    {
+      "id": "saving-to-jude-account",
+      "subcategory": "Jude Saving → Jude",
+      "type": "ACCOUNT",
+      "accountFrom": "xxx-xxx xxxxx4459",
+      "accountTo": "xxx-xxx xxxxx4442"
+    },
+    {
+      "id": "jude-mqb-to-personal",
+      "subcategory": "Jude ↔ Jude",
+      "type": "ACCOUNT",
+      "accountFrom": "xxx-xxx xxxxx4442",
+      "accountTo": "xxx-xxx xx9212"
+    },
+    {
+      "id": "jude-personal-to-mqb",
+      "subcategory": "Jude ↔ Jude",
+      "type": "ACCOUNT",
+      "accountFrom": "xxx-xxx xx9212",
+      "accountTo": "xxx-xxx xxxxx4442"
+    },
+    {
+      "id": "transit-to-securities-account",
+      "subcategory": "Transit → Securities",
+      "type": "ACCOUNT",
+      "accountFrom": "xxx-xxx xxxxx5706",
+      "accountTo": "xxx-xxx xxxxx1161"
+    },
+    {
+      "id": "securities-to-transit-account",
+      "subcategory": "Securities → Transit",
+      "type": "ACCOUNT",
+      "accountFrom": "xxx-xxx xxxxx1161",
+      "accountTo": "xxx-xxx xxxxx5706"
+    },
+    {
+      "id": "transit-to-common-account",
+      "subcategory": "Transit → Common",
+      "type": "ACCOUNT",
+      "accountFrom": "xxx-xxx xxxxx5706",
+      "accountTo": "xxx-xxx xx1842"
+    },
+    {
+      "id": "common-to-transit-account",
+      "subcategory": "Common → Transit",
+      "type": "ACCOUNT",
+      "accountFrom": "xxx-xxx xx1842",
+      "accountTo": "xxx-xxx xxxxx5706"
+    }
+  ]
+}

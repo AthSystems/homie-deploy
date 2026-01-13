@@ -1,0 +1,1715 @@
+{
+  "version" : "3.0.0",
+  "description" : "V3 Categorization Rules with Learning",
+  "rules" : [ {
+    "id" : "llm-rule-00ab40c5-e92a-4372-af1b-e1cfb13607a5",
+    "name" : "Bank Interest Income Rule",
+    "subcategory" : "9",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "credit interest", "interest paid", "interest" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "description" : "All transactions are related to interest payments, with consistent terminology and descriptive patterns indicating bank interest income",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 11,
+      "trainingDateRange" : {
+        "start" : "2025-01-31T00:00:00Z",
+        "end" : "2025-06-30T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 2, 6, 18, 19, 20 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "All transactions are related to interest payments, with consistent terminology and descriptive patterns indicating bank interest income",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "Consistent 'interest' keyword", "Optional bonus amount notation", "Small to moderate transaction amounts" ]
+    },
+    "createdAt" : "2026-01-12T22:10:30.981991Z",
+    "updatedAt" : "2026-01-12T22:10:30.981991Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-8d308710-4b4d-478a-9b3a-d22f6dbec24c",
+    "name" : "Savings Transfer Rule",
+    "subcategory" : "58",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "transfer", "savings goal", "netbank", "commbank app" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : ">",
+          "value" : -2000.0,
+          "value2" : null
+        }, {
+          "op" : "<",
+          "value" : 2000.0,
+          "value2" : null
+        } ]
+      } ]
+    },
+    "description" : "Transactions are consistently savings transfers between bank accounts, with consistent keywords and amount range",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 35,
+      "trainingDateRange" : {
+        "start" : "2025-02-24T00:00:00Z",
+        "end" : "2025-06-26T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 3, 4, 5, 7, 8 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions are consistently savings transfers between bank accounts, with consistent keywords and amount range",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "NetBank transfer description", "My savings goal text", "Consistent amount range" ]
+    },
+    "createdAt" : "2026-01-12T22:10:35.602798Z",
+    "updatedAt" : "2026-01-12T22:10:35.602798Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-a75455b4-bdb6-4d88-b805-a2c9fc249e17",
+    "name" : "Medical/Pharmacy Transactions in Western Australia",
+    "subcategory" : "1",
+    "priority" : 100,
+    "confidence" : 0.85,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "chemist", "pharmacy", "medical", "clinipath", "pathology" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "inglewood", "morley", "osborne park", "yokine", "karrinyup" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "description" : "Transactions consistently relate to medical and pharmacy services in Western Australian suburbs, with similar merchant names and locations",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 11,
+      "trainingDateRange" : {
+        "start" : "2025-01-15T00:00:00Z",
+        "end" : "2025-06-13T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 16, 133, 135, 148, 162 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions consistently relate to medical and pharmacy services in Western Australian suburbs, with similar merchant names and locations",
+      "llmConfidence" : 0.85,
+      "notes" : null,
+      "tags" : [ "WA suburb locations", "medical/pharmacy services", "debit card purchases" ]
+    },
+    "createdAt" : "2026-01-12T22:10:41.784348700Z",
+    "updatedAt" : "2026-01-12T22:10:41.784348700Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-4dd42b0b-1a65-4f51-bc09-1f33ff081f4a",
+    "name" : "Travel and International Transactions",
+    "subcategory" : "28",
+    "priority" : 100,
+    "confidence" : 0.9,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "DEBIT CARD PURCHASE", "AIRASIA", "JETSTAR", "BOOKING", "EMIRATES", "WHSMITH", "LOVE BALI", "GetYourGuide", "FINNET INDONESIA" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "Transactions predominantly represent international travel-related purchases across multiple countries (Indonesia, Australia, Netherlands, UAE), with consistent debit card purchase patterns and foreign transaction characteristics",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 18,
+      "trainingDateRange" : {
+        "start" : "2025-03-11T00:00:00Z",
+        "end" : "2025-06-16T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 29, 138, 509, 510, 511 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions predominantly represent international travel-related purchases across multiple countries (Indonesia, Australia, Netherlands, UAE), with consistent debit card purchase patterns and foreign transaction characteristics",
+      "llmConfidence" : 0.9,
+      "notes" : null,
+      "tags" : [ "International merchant names", "Debit card purchase transactions", "Multiple country transaction origins" ]
+    },
+    "createdAt" : "2026-01-12T22:10:48.169231400Z",
+    "updatedAt" : "2026-01-12T22:10:48.169231400Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-c6db3f7b-2855-4498-8445-d5b46103a9ab",
+    "name" : "Asian Restaurant Dining",
+    "subcategory" : "24",
+    "priority" : 100,
+    "confidence" : 0.9,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "house of pho", "eatclub", "bangkok brothers", "hakata gensuke", "taka's kitchen", "uncle billy's", "hiss & smoke", "dxh ramen", "bambii", "tosaka" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : ">=",
+          "value" : -165.0,
+          "value2" : null
+        }, {
+          "op" : "<=",
+          "value" : -7.0,
+          "value2" : null
+        } ]
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "Captures a wide range of Asian restaurant transactions in Perth/Western Australia, with consistent amount range and dining-related purchases",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 25,
+      "trainingDateRange" : {
+        "start" : "2025-01-14T00:00:00Z",
+        "end" : "2025-07-02T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 30, 33, 63, 76, 84 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Captures a wide range of Asian restaurant transactions in Perth/Western Australia, with consistent amount range and dining-related purchases",
+      "llmConfidence" : 0.9,
+      "notes" : null,
+      "tags" : [ "Asian restaurant names", "Perth/WA location", "Small meal transaction amounts" ]
+    },
+    "createdAt" : "2026-01-12T22:11:08.122343700Z",
+    "updatedAt" : "2026-01-12T22:11:08.122343700Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-6de01941-e769-4b8c-bd57-79429bb8e070",
+    "name" : "Perth/WA Bars and Pubs",
+    "subcategory" : "22",
+    "priority" : 100,
+    "confidence" : 0.9,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "railway hotel", "ezra pound", "stories", "the beaufort", "inglewood hotel", "the leadlight", "gage roads", "sneaky tony's" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : ">",
+          "value" : -50.0,
+          "value2" : null
+        }, {
+          "op" : "<",
+          "value" : 0.0,
+          "value2" : null
+        } ]
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "Transactions represent local Perth/Western Australia bar and pub purchases with consistent negative transaction amounts",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 14,
+      "trainingDateRange" : {
+        "start" : "2025-01-28T00:00:00Z",
+        "end" : "2025-06-23T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 31, 114, 136, 172, 514 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions represent local Perth/Western Australia bar and pub purchases with consistent negative transaction amounts",
+      "llmConfidence" : 0.9,
+      "notes" : null,
+      "tags" : [ "Perth/WA location", "Bar/pub merchant names", "Consistent negative transaction range" ]
+    },
+    "createdAt" : "2026-01-12T22:11:21.470021800Z",
+    "updatedAt" : "2026-01-12T22:11:21.470021800Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-28a818ab-b113-4aa5-b95d-7df2a1f60a80",
+    "name" : "Local Perth/Inglewood Cafe Transactions",
+    "subcategory" : "23",
+    "priority" : 100,
+    "confidence" : 0.9,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "SQ *WILD BAKERY", "SQ *TWIN PEAKS COFFEE", "SQ *BOSSMAN COFFEE", "SQ *LOCA", "SQ *CHU", "DOWNTOWN CAFE", "EFTPOS DEBIT", "FIVE SEASONS", "The Sparrow's Nest", "Yelo" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : ">",
+          "value" : -100.0,
+          "value2" : null
+        }, {
+          "op" : "<=",
+          "value" : 0.0,
+          "value2" : null
+        } ]
+      } ]
+    },
+    "description" : "Captures local Perth/Inglewood cafe and coffee shop transactions with Square (SQ) payment processing, focusing on small purchase amounts typical of cafe transactions",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 40,
+      "trainingDateRange" : {
+        "start" : "2025-01-17T00:00:00Z",
+        "end" : "2025-06-27T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 32, 74, 92, 108, 127 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Captures local Perth/Inglewood cafe and coffee shop transactions with Square (SQ) payment processing, focusing on small purchase amounts typical of cafe transactions",
+      "llmConfidence" : 0.9,
+      "notes" : null,
+      "tags" : [ "Square payment processor", "Western Australian location", "Small transaction amounts", "Cafe/coffee shop merchants" ]
+    },
+    "createdAt" : "2026-01-12T22:11:35.331236600Z",
+    "updatedAt" : "2026-01-12T22:11:35.331236600Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-d577cd44-540d-4b1a-993a-8f03d09c7ee2",
+    "name" : "Grocery Shopping - Perth Metro Area",
+    "subcategory" : "5",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "WOOLWORTHS", "COLES", "ALDI STORES", "MONDO BUTCHERS" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "INGLEWOOD", "KARRINYUP", "MORLEY", "HILLARYS", "PERTH" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "description" : "Transactions are consistently from grocery stores in Perth metropolitan suburbs, with a focus on common supermarket chains and local grocery stores",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 97,
+      "trainingDateRange" : {
+        "start" : "2025-01-13T00:00:00Z",
+        "end" : "2025-07-01T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 34, 36, 38, 39, 40 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions are consistently from grocery stores in Perth metropolitan suburbs, with a focus on common supermarket chains and local grocery stores",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "Supermarket chain names", "Perth suburban locations" ]
+    },
+    "createdAt" : "2026-01-12T22:11:42.906741800Z",
+    "updatedAt" : "2026-01-12T22:11:42.906741800Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-73537050-e602-45ca-b6ce-7c1f374eb943",
+    "name" : "Food & Dining Transactions",
+    "subcategory" : "25",
+    "priority" : 100,
+    "confidence" : 0.9,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "mcdonalds", "roll'd", "gelato", "uber eats", "sq *", "noodle", "deli", "grab n go", "sodexo", "restaurant", "pandas", "sauma", "arancini", "bambii" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : "<",
+          "value" : 0.0,
+          "value2" : null
+        }, {
+          "op" : ">",
+          "value" : -250.0,
+          "value2" : null
+        } ]
+      } ]
+    },
+    "description" : "Captures typical food and dining transactions with merchant names, negative transaction flow, and reasonable amount range",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 118,
+      "trainingDateRange" : {
+        "start" : "2025-01-13T00:00:00Z",
+        "end" : "2025-06-26T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 35, 47, 65, 89, 93 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Captures typical food and dining transactions with merchant names, negative transaction flow, and reasonable amount range",
+      "llmConfidence" : 0.9,
+      "notes" : null,
+      "tags" : [ "Food-related merchant keywords", "Negative transaction amount", "Local Australian merchants" ]
+    },
+    "createdAt" : "2026-01-12T22:11:56.337726200Z",
+    "updatedAt" : "2026-01-12T22:11:56.337726200Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-88f85e9e-5749-4674-bd1d-007c48071219",
+    "name" : "Manon Guyot Transfer Rule",
+    "subcategory" : "54",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "Manon Guyot", "commun account", "OSKO PAYMENT", "Transfer To" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "description" : "Transactions consistently involve transfers to/from Manon Guyot using CommBank App and Osko payments, with 'commun account' consistently appearing in descriptions",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 28,
+      "trainingDateRange" : {
+        "start" : "2025-01-14T00:00:00Z",
+        "end" : "2025-06-30T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 37, 50, 57, 385, 386 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions consistently involve transfers to/from Manon Guyot using CommBank App and Osko payments, with 'commun account' consistently appearing in descriptions",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "Specific person name", "CommBank App transfer method", "Osko payment type" ]
+    },
+    "createdAt" : "2026-01-12T22:12:07.330412Z",
+    "updatedAt" : "2026-01-12T22:12:07.330412Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-6f0c39ff-6d59-4101-9703-bb2e6afc3cf4",
+    "name" : "Westpac Mobile Withdrawal Transfer",
+    "subcategory" : "55",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "WITHDRAWAL MOBILE", "TFR Westpac Cho", "Spare funds" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "All transactions are mobile withdrawals from Westpac with consistent description pattern of 'WITHDRAWAL MOBILE' followed by a number, 'TFR Westpac Cho', and 'Spare funds'",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 75,
+      "trainingDateRange" : {
+        "start" : "2025-01-21T00:00:00Z",
+        "end" : "2025-06-26T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 45, 261, 562, 592, 593 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "All transactions are mobile withdrawals from Westpac with consistent description pattern of 'WITHDRAWAL MOBILE' followed by a number, 'TFR Westpac Cho', and 'Spare funds'",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "Consistent 'WITHDRAWAL MOBILE' prefix", "Westpac bank transfer", "Outgoing transfer type" ]
+    },
+    "createdAt" : "2026-01-12T22:12:14.357635100Z",
+    "updatedAt" : "2026-01-12T22:12:14.357635100Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-eb427095-f901-4a22-99e3-d17e953f9855",
+    "name" : "Clothing and Fashion Retail",
+    "subcategory" : "3",
+    "priority" : 100,
+    "confidence" : 0.9,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "uniqlo", "h&m", "forever new", "rock wear", "underarmour", "citybeach", "generalpants", "rebel", "strandbags" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "description" : "Transactions are predominantly from clothing, fashion, and accessory retailers located in Western Australian shopping centers like Karrinyup and Perth Airport",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 25,
+      "trainingDateRange" : {
+        "start" : "2025-01-14T00:00:00Z",
+        "end" : "2025-06-28T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 71, 73, 82, 97, 111 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions are predominantly from clothing, fashion, and accessory retailers located in Western Australian shopping centers like Karrinyup and Perth Airport",
+      "llmConfidence" : 0.9,
+      "notes" : null,
+      "tags" : [ "Karrinyup shopping location", "Clothing and fashion brands", "Perth metropolitan area retailers" ]
+    },
+    "createdAt" : "2026-01-12T22:12:22.144435100Z",
+    "updatedAt" : "2026-01-12T22:12:22.144435100Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-71042c46-1db6-4cca-9103-be1395f81cbb",
+    "name" : "Beauty & Cosmetics Purchases",
+    "subcategory" : "29",
+    "priority" : 100,
+    "confidence" : 0.9,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "sephora", "mecca", "total brow", "terra aesthetics", "harli and harpa", "accessorie" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : ">",
+          "value" : -100.0,
+          "value2" : null
+        }, {
+          "op" : "<",
+          "value" : 100.0,
+          "value2" : null
+        } ]
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "Transactions consistently relate to beauty, cosmetics, and aesthetic services with consistent location (Western Australia) and amount range",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 8,
+      "trainingDateRange" : {
+        "start" : "2025-01-29T00:00:00Z",
+        "end" : "2025-06-28T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 72, 88, 125, 130, 149 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions consistently relate to beauty, cosmetics, and aesthetic services with consistent location (Western Australia) and amount range",
+      "llmConfidence" : 0.9,
+      "notes" : null,
+      "tags" : [ "Beauty/cosmetics merchants", "Small transaction amounts", "Australian locations" ]
+    },
+    "createdAt" : "2026-01-12T22:12:28.770217100Z",
+    "updatedAt" : "2026-01-12T22:12:28.770217100Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-536ad8c5-f6ff-4072-9142-634bed788990",
+    "name" : "Automotive and Parking Expenses",
+    "subcategory" : "69",
+    "priority" : 100,
+    "confidence" : 0.9,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "wilson parking", "easypark", "repco", "super cheap auto", "department of transpor", "galleria motors" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "description" : "These transactions represent a consistent pattern of automotive-related expenses including parking, auto parts, vehicle services, and transportation-related purchases, predominantly in Western Australian locations like Perth, Morley, and Fremantle",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 12,
+      "trainingDateRange" : {
+        "start" : "2025-01-14T00:00:00Z",
+        "end" : "2025-06-24T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 75, 163, 198, 297, 744 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "These transactions represent a consistent pattern of automotive-related expenses including parking, auto parts, vehicle services, and transportation-related purchases, predominantly in Western Australian locations like Perth, Morley, and Fremantle",
+      "llmConfidence" : 0.9,
+      "notes" : null,
+      "tags" : [ "Automotive merchant names", "Western Australian locations", "Parking and vehicle-related purchases" ]
+    },
+    "createdAt" : "2026-01-12T22:12:35.614359500Z",
+    "updatedAt" : "2026-01-12T22:12:35.614359500Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-7d333707-d1f5-4b95-9e7f-61f58b83c3af",
+    "name" : "Goodlife Mount Lawley Membership",
+    "subcategory" : "30",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "DBS*Goodlife Mount Law", "Goodlife Mount Lawley", "Mount Law" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : "<",
+          "value" : 0.0,
+          "value2" : null
+        }, {
+          "op" : ">",
+          "value" : -200.0,
+          "value2" : null
+        } ]
+      } ]
+    },
+    "description" : "Transactions are consistently from Goodlife Mount Lawley, likely a recurring membership or gym payment with negative amounts in a specific range",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 47,
+      "trainingDateRange" : {
+        "start" : "2025-01-15T00:00:00Z",
+        "end" : "2025-06-28T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 78, 83, 86, 95, 100 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions are consistently from Goodlife Mount Lawley, likely a recurring membership or gym payment with negative amounts in a specific range",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "DBS*Goodlife prefix", "Mount Lawley location", "Recurring negative transaction" ]
+    },
+    "createdAt" : "2026-01-12T22:12:42.659445500Z",
+    "updatedAt" : "2026-01-12T22:12:42.659445500Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-ce0bc77d-6c0b-4b4d-8325-dc2c0840e1ae",
+    "name" : "LA GRANGE PATISS Wages Income",
+    "subcategory" : "16",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "LA GRANGE PATISS", "WAGES", "DIRECT CREDIT" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "flow",
+        "direction" : "IN"
+      } ]
+    },
+    "description" : "Most transactions are identical Direct Credit payments from LA GRANGE PATISS with 'WAGES' keyword, indicating a consistent salary source",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 13,
+      "trainingDateRange" : {
+        "start" : "2025-01-14T00:00:00Z",
+        "end" : "2025-06-25T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 85, 119, 189, 451, 452 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Most transactions are identical Direct Credit payments from LA GRANGE PATISS with 'WAGES' keyword, indicating a consistent salary source",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "LA GRANGE PATISS merchant name", "Consistent 'DIRECT CREDIT' payment type", "Wage/salary payment" ]
+    },
+    "createdAt" : "2026-01-12T22:12:53.043556200Z",
+    "updatedAt" : "2026-01-12T22:12:53.043556200Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-309ac0f2-01f4-4066-8752-4650d1603d30",
+    "name" : "Retail Shopping - Department Stores and Online Marketplaces",
+    "subcategory" : "32",
+    "priority" : 100,
+    "confidence" : 0.9,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "OR",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "MYER", "TARGET", "KMART", "AMAZON MARKETPLACE", "AMAZON AU" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "description" : "Transactions predominantly feature department stores (Myer, Target, Kmart) and online marketplace (Amazon) purchases, with consistent Australian location markers. The rule captures the primary retailers and shopping platforms in the dataset.",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 24,
+      "trainingDateRange" : {
+        "start" : "2025-01-31T00:00:00Z",
+        "end" : "2025-07-02T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 94, 177, 193, 194, 196 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions predominantly feature department stores (Myer, Target, Kmart) and online marketplace (Amazon) purchases, with consistent Australian location markers. The rule captures the primary retailers and shopping platforms in the dataset.",
+      "llmConfidence" : 0.9,
+      "notes" : null,
+      "tags" : [ "Retail shopping", "Australian retailers", "Online and physical store purchases" ]
+    },
+    "createdAt" : "2026-01-12T22:13:01.109759900Z",
+    "updatedAt" : "2026-01-12T22:13:01.109759900Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-460d0b37-ec0c-48e0-a7dd-9e525abc576c",
+    "name" : "Bunnings Home Improvement Purchases",
+    "subcategory" : "6",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "BUNNINGS", "DEBIT CARD PURCHASE" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "Transactions are consistently Bunnings purchases with a debit card, representing home improvement or hardware store spending",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 8,
+      "trainingDateRange" : {
+        "start" : "2025-01-28T00:00:00Z",
+        "end" : "2025-06-11T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 121, 677, 678, 1230, 1231 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions are consistently Bunnings purchases with a debit card, representing home improvement or hardware store spending",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "Merchant name 'BUNNINGS'", "Debit card transaction type", "Negative transaction amount" ]
+    },
+    "createdAt" : "2026-01-12T22:13:08.630260100Z",
+    "updatedAt" : "2026-01-12T22:13:08.630260100Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-2e0e9360-8e45-469d-8a49-351360594a31",
+    "name" : "Digital Subscriptions and Services",
+    "subcategory" : "38",
+    "priority" : 100,
+    "confidence" : 0.9,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "uber", "netflix", "google", "chatgpt", "chess.com", "primevideo", "openai" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : "<",
+          "value" : 0.0,
+          "value2" : null
+        }, {
+          "op" : ">",
+          "value" : -130.0,
+          "value2" : null
+        } ]
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "Captures recurring digital service subscriptions and one-time digital service purchases across multiple platforms",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 45,
+      "trainingDateRange" : {
+        "start" : "2025-01-22T00:00:00Z",
+        "end" : "2025-07-01T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 131, 171, 200, 292, 444 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Captures recurring digital service subscriptions and one-time digital service purchases across multiple platforms",
+      "llmConfidence" : 0.9,
+      "notes" : null,
+      "tags" : [ "Subscription-based services", "Digital platforms", "Consistent negative transaction amounts" ]
+    },
+    "createdAt" : "2026-01-12T22:13:16.465063800Z",
+    "updatedAt" : "2026-01-12T22:13:16.465063800Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-5dd54c59-882a-4876-a737-a3689e7f032d",
+    "name" : "Ride Sharing Transportation",
+    "subcategory" : "73",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "uber", "didi", "mobility", "trip", "rideshare" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : "<",
+          "value" : 0.0,
+          "value2" : null
+        }, {
+          "op" : ">",
+          "value" : -80.0,
+          "value2" : null
+        } ]
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "Transactions consistently relate to ride-sharing services like Uber and DiDi, with negative amounts indicating transportation expenses. The rule captures variations in merchant names and transaction formats while maintaining a tight amount range.",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 10,
+      "trainingDateRange" : {
+        "start" : "2025-01-13T00:00:00Z",
+        "end" : "2025-05-21T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 132, 637, 1216, 1217, 1218 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions consistently relate to ride-sharing services like Uber and DiDi, with negative amounts indicating transportation expenses. The rule captures variations in merchant names and transaction formats while maintaining a tight amount range.",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "uber", "trip", "debit card purchase", "negative amount" ]
+    },
+    "createdAt" : "2026-01-12T22:13:30.374004400Z",
+    "updatedAt" : "2026-01-12T22:13:30.374004400Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-6c3b784f-9e7c-4e63-a262-7838f48a2c00",
+    "name" : "Karrinyup & Online Purchases",
+    "subcategory" : "34",
+    "priority" : 100,
+    "confidence" : 0.85,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "KARRINYUP", "STACKSOCIAL", "GHIMIRE INVESTMENT", "DEBIT CARD PURCHASE" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : ">=",
+          "value" : -65.95,
+          "value2" : null
+        }, {
+          "op" : "<=",
+          "value" : 0.0,
+          "value2" : null
+        } ]
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "Captures online and local purchases with consistent transaction characteristics, including location keywords and negative amount range",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 5,
+      "trainingDateRange" : {
+        "start" : "2025-01-22T00:00:00Z",
+        "end" : "2025-04-24T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 150, 481, 1291, 1636, 1637 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Captures online and local purchases with consistent transaction characteristics, including location keywords and negative amount range",
+      "llmConfidence" : 0.85,
+      "notes" : null,
+      "tags" : [ "DEBIT CARD PURCHASE keyword", "Negative transaction amount", "Multiple merchant variations" ]
+    },
+    "createdAt" : "2026-01-12T22:13:38.026192200Z",
+    "updatedAt" : "2026-01-12T22:13:38.026192200Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-2d0cf130-e38e-4f6e-80cf-fe054dedeb57",
+    "name" : "Fuel and Convenience Store Purchases",
+    "subcategory" : "71",
+    "priority" : 100,
+    "confidence" : 0.9,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "BP", "AMPOL", "Reddy Express", "United Petroleum", "DEBIT CARD PURCHASE" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : "<",
+          "value" : 0.0,
+          "value2" : null
+        }, {
+          "op" : ">",
+          "value" : -62.0,
+          "value2" : null
+        } ]
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "Captures typical fuel station and convenience store purchases with consistent transaction characteristics",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 11,
+      "trainingDateRange" : {
+        "start" : "2025-01-29T00:00:00Z",
+        "end" : "2025-06-12T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 195, 638, 662, 663, 664 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Captures typical fuel station and convenience store purchases with consistent transaction characteristics",
+      "llmConfidence" : 0.9,
+      "notes" : null,
+      "tags" : [ "Petroleum brand names", "Debit card purchase type", "Small negative transaction amounts" ]
+    },
+    "createdAt" : "2026-01-12T22:13:43.579189800Z",
+    "updatedAt" : "2026-01-12T22:13:43.579189800Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-7e1b6fe4-33e2-4100-9d52-fee53b524927",
+    "name" : "Telstra Mobile Services",
+    "subcategory" : "77",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "TELSTRA", "TELSTRA SERVICES", "DEBIT CARD PURCHASE TELSTRA" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : ">=",
+          "value" : -300.0,
+          "value2" : null
+        }, {
+          "op" : "<=",
+          "value" : -175.0,
+          "value2" : null
+        } ]
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "Transactions consistently show Telstra mobile service purchases with similar negative amount range and outgoing flow",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 7,
+      "trainingDateRange" : {
+        "start" : "2025-01-20T00:00:00Z",
+        "end" : "2025-06-19T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 201, 1466, 1521, 1522, 1523 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions consistently show Telstra mobile service purchases with similar negative amount range and outgoing flow",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "TELSTRA", "DEBIT CARD PURCHASE", "Consistent negative amount" ]
+    },
+    "createdAt" : "2026-01-12T22:13:49.147162300Z",
+    "updatedAt" : "2026-01-12T22:13:49.147162300Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-54317d0d-6575-48bb-9362-73d70ad6369a",
+    "name" : "Entertainment and Leisure Purchases",
+    "subcategory" : "20",
+    "priority" : 100,
+    "confidence" : 0.85,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "holey moley", "ticketek", "caversham wildlife", "steamgames", "primevideo", "bcf australia", "la bastide" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "Transactions represent a mix of entertainment, gaming, wildlife park, and streaming service purchases with consistent debit card or purchase patterns",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 13,
+      "trainingDateRange" : {
+        "start" : "2025-01-17T00:00:00Z",
+        "end" : "2025-06-27T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 202, 208, 378, 632, 668 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions represent a mix of entertainment, gaming, wildlife park, and streaming service purchases with consistent debit card or purchase patterns",
+      "llmConfidence" : 0.85,
+      "notes" : null,
+      "tags" : [ "Diverse entertainment venues", "Primarily debit card purchases", "Mix of local Australian and online international merchants" ]
+    },
+    "createdAt" : "2026-01-12T22:13:55.057251500Z",
+    "updatedAt" : "2026-01-12T22:13:55.057251500Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-ec8f16e8-bbf4-4192-be30-bdf30fde2a2d",
+    "name" : "Rent and Personal Deposits via OSKO",
+    "subcategory" : "14",
+    "priority" : 100,
+    "confidence" : 0.9,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "DEPOSIT-OSKO PAYMENT", "rent", "weeks rent", "bond" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : ">=",
+          "value" : 50.0,
+          "value2" : null
+        }, {
+          "op" : "<=",
+          "value" : 1100.0,
+          "value2" : null
+        } ]
+      } ]
+    },
+    "description" : "Transactions are consistently OSKO payments for rent or personal transfers, with amounts between $50-$1100, typically involving names like Jessica Munawar, Daisy Castellanos, Helen Zeleke, and Pauline Pavot",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 41,
+      "trainingDateRange" : {
+        "start" : "2025-01-13T00:00:00Z",
+        "end" : "2025-06-30T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 336, 449, 633, 634, 635 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions are consistently OSKO payments for rent or personal transfers, with amounts between $50-$1100, typically involving names like Jessica Munawar, Daisy Castellanos, Helen Zeleke, and Pauline Pavot",
+      "llmConfidence" : 0.9,
+      "notes" : null,
+      "tags" : [ "DEPOSIT-OSKO PAYMENT", "rent-related keywords", "personal name transfers" ]
+    },
+    "createdAt" : "2026-01-12T22:14:01.754367Z",
+    "updatedAt" : "2026-01-12T22:14:01.754367Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-70a0c154-fada-47fc-8d30-22f9f3c58c9a",
+    "name" : "Karridale Group Salary Deposits",
+    "subcategory" : "15",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "DEPOSIT-SALARY", "KARRIDALE GROUP", "PAYROL", "PAYROLL" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "flow",
+        "direction" : "IN"
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : ">",
+          "value" : 100.0,
+          "value2" : null
+        }, {
+          "op" : "<",
+          "value" : 3200.0,
+          "value2" : null
+        } ]
+      } ]
+    },
+    "description" : "Most transactions are salary deposits from Karridale Group with consistent pattern of 'DEPOSIT-SALARY' and 'PAYROL/PAYROLL' keywords, with amounts between 100 and 3200",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 19,
+      "trainingDateRange" : {
+        "start" : "2025-01-15T00:00:00Z",
+        "end" : "2025-06-05T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 485, 1905, 1906, 1907, 1908 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Most transactions are salary deposits from Karridale Group with consistent pattern of 'DEPOSIT-SALARY' and 'PAYROL/PAYROLL' keywords, with amounts between 100 and 3200",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "KARRIDALE GROUP", "DEPOSIT-SALARY", "PAYROLL keyword" ]
+    },
+    "createdAt" : "2026-01-12T22:14:12.139661200Z",
+    "updatedAt" : "2026-01-12T22:14:12.139661200Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-9c1b358d-199c-4222-9187-e8f768a31714",
+    "name" : "PAM Perth Rent Payment",
+    "subcategory" : "7",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "PAM Perth", "PYMT PAM Perth", "WITHDRAWAL MOBILE", "WITHDRAWAL-OSKO PAYMENT" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "Rent", "Trust Account Rent" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : ">=",
+          "value" : -910.0,
+          "value2" : null
+        }, {
+          "op" : "<=",
+          "value" : -850.0,
+          "value2" : null
+        } ]
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "Consistent pattern of rent payments to PAM Perth with specific transaction types and amount range",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 24,
+      "trainingDateRange" : {
+        "start" : "2025-01-15T00:00:00Z",
+        "end" : "2025-06-25T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 524, 641, 642, 1069, 1070 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Consistent pattern of rent payments to PAM Perth with specific transaction types and amount range",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "PAM Perth identifier", "Rent payment keyword", "Specific withdrawal methods", "Consistent amount range" ]
+    },
+    "createdAt" : "2026-01-12T22:14:18.664566Z",
+    "updatedAt" : "2026-01-12T22:14:18.664566Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-72109c70-cbd2-4113-a3a1-09dff0c27cd2",
+    "name" : "Westpac Internal Transfer",
+    "subcategory" : "56",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "DEPOSIT ONLINE", "WITHDRAWAL MOBILE", "TFR Westpac" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "BETWEEN",
+        "conditions" : [ {
+          "op" : ">=",
+          "value" : -3832.28,
+          "value2" : null
+        }, {
+          "op" : "<=",
+          "value" : 3832.28,
+          "value2" : null
+        } ]
+      } ]
+    },
+    "description" : "Transactions are internal transfers between Westpac accounts, characterized by consistent pattern of DEPOSIT/WITHDRAWAL with unique numeric codes and 'TFR Westpac' identifier",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 27,
+      "trainingDateRange" : {
+        "start" : "2025-02-11T00:00:00Z",
+        "end" : "2025-06-04T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 563, 581, 582, 583, 584 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions are internal transfers between Westpac accounts, characterized by consistent pattern of DEPOSIT/WITHDRAWAL with unique numeric codes and 'TFR Westpac' identifier",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "Westpac transfer pattern", "Consistent transaction type", "Unique numeric transfer codes" ]
+    },
+    "createdAt" : "2026-01-12T22:14:24.777646400Z",
+    "updatedAt" : "2026-01-12T22:14:24.777646400Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-eaa2d80a-ce41-40bf-be78-6ecc77145f6f",
+    "name" : "Westpac Cho Transfer Rule",
+    "subcategory" : "53",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "DEPOSIT ONLINE", "WITHDRAWAL MOBILE", "TFR Westpac Cho" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : ">=",
+          "value" : -1000.0,
+          "value2" : null
+        }, {
+          "op" : "<=",
+          "value" : 1000.0,
+          "value2" : null
+        } ]
+      } ]
+    },
+    "description" : "Transactions are consistently Westpac transfers with specific pattern of DEPOSIT/WITHDRAWAL, online/mobile channel, and unique transfer number. Amount range covers all observed transactions.",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 24,
+      "trainingDateRange" : {
+        "start" : "2025-01-20T00:00:00Z",
+        "end" : "2025-06-04T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 587, 931, 933, 961, 964 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions are consistently Westpac transfers with specific pattern of DEPOSIT/WITHDRAWAL, online/mobile channel, and unique transfer number. Amount range covers all observed transactions.",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "Westpac Cho transfer identifier", "Consistent transfer number format", "Mixed deposit and withdrawal directions" ]
+    },
+    "createdAt" : "2026-01-12T22:14:30.247727200Z",
+    "updatedAt" : "2026-01-12T22:14:30.247727200Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-41517739-562d-46d9-ba5a-20a8e5a63668",
+    "name" : "Westpac Internal Transfer",
+    "subcategory" : "61",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "WITHDRAWAL MOBILE", "DEPOSIT ONLINE", "TFR Westpac" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "Cho Spare funds", "Lif" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "description" : "Transactions appear to be internal transfers between Westpac accounts with consistent transfer references and similar transaction types",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 6,
+      "trainingDateRange" : {
+        "start" : "2025-04-22T00:00:00Z",
+        "end" : "2025-06-26T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 591, 597, 631, 1126, 1210 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions appear to be internal transfers between Westpac accounts with consistent transfer references and similar transaction types",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "Westpac transfer keyword", "Specific transfer references", "Consistent transaction types" ]
+    },
+    "createdAt" : "2026-01-12T22:14:35.260728600Z",
+    "updatedAt" : "2026-01-12T22:14:35.260728600Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-f8dadfca-2564-4010-b4a7-51f27b1ae0c9",
+    "name" : "Insurance and Membership Payments",
+    "subcategory" : "70",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "ALLIANZ INSURANCE", "RACT PTY LTD", "PAYMENT BY AUTHORITY" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : "<",
+          "value" : 0.0,
+          "value2" : null
+        }, {
+          "op" : ">",
+          "value" : -70.0,
+          "value2" : null
+        } ]
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "Transactions consistently involve insurance or membership payments to Allianz or RACT, with negative amounts in a specific range, indicating recurring expense payments",
+    "source" : "LLM_GENERATED",
+    "status" : "SUGGESTED",
+    "metadata" : {
+      "trainingSize" : 10,
+      "trainingDateRange" : {
+        "start" : "2025-01-29T00:00:00Z",
+        "end" : "2025-06-10T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 956, 1874, 1875, 1876, 1878 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Transactions consistently involve insurance or membership payments to Allianz or RACT, with negative amounts in a specific range, indicating recurring expense payments",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "Consistent merchant names", "Negative payment amounts", "Recurring payment pattern" ]
+    },
+    "createdAt" : "2026-01-12T22:14:41.549805100Z",
+    "updatedAt" : "2026-01-12T22:14:41.549805100Z",
+    "approvedAt" : null,
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-d0e1ee04-ecf9-495c-b2fe-facbc5ce9825",
+    "name" : "BUPA Insurance Payments",
+    "subcategory" : "2",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "BUPA", "BUPA AUSTRALIA" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "PAYMENT BY AUTHORITY", "DEPOSIT", "CLM-CR" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "description" : "Consistent pattern of BUPA-related transactions with payment or claim references, showing multiple related transactions from the same insurance provider",
+    "source" : "LLM_GENERATED",
+    "status" : "APPROVED",
+    "metadata" : {
+      "trainingSize" : 7,
+      "trainingDateRange" : {
+        "start" : "2025-01-17T00:00:00Z",
+        "end" : "2025-06-17T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 959, 960, 969, 970, 971 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Consistent pattern of BUPA-related transactions with payment or claim references, showing multiple related transactions from the same insurance provider",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "BUPA brand name", "Payment by authority format", "Claim/credit references" ]
+    },
+    "createdAt" : "2026-01-12T22:14:46.416105500Z",
+    "updatedAt" : "2026-01-12T22:36:26.652659700Z",
+    "approvedAt" : "2026-01-12T22:36:26.651659700Z",
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-375b069d-0f16-46db-a46f-d95f19893d97",
+    "name" : "AliExpress Online Shopping",
+    "subcategory" : "19",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "aliexpress", "www.aliexpress.com", "ALIEXPRESS.COM" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "Extremely consistent pattern of online purchases from AliExpress across multiple locations (AUS, GBR, SGP) with consistent transaction type of debit card purchases",
+    "source" : "LLM_GENERATED",
+    "status" : "APPROVED",
+    "metadata" : {
+      "trainingSize" : 28,
+      "trainingDateRange" : {
+        "start" : "2025-02-13T00:00:00Z",
+        "end" : "2025-05-15T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 1257, 1264, 1266, 1278, 1496 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "Extremely consistent pattern of online purchases from AliExpress across multiple locations (AUS, GBR, SGP) with consistent transaction type of debit card purchases",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "Multiple international transaction locations", "Consistent merchant name variations", "Debit card purchase pattern" ]
+    },
+    "createdAt" : "2026-01-12T22:14:53.733941400Z",
+    "updatedAt" : "2026-01-12T22:35:51.431375600Z",
+    "approvedAt" : "2026-01-12T22:35:51.429373200Z",
+    "approvedBy" : null
+  }, {
+    "id" : "llm-rule-6ea0f360-58d0-45ff-bd60-915190674fe6",
+    "name" : "The Night Savior Merchant Rule",
+    "subcategory" : "27",
+    "priority" : 100,
+    "confidence" : 0.95,
+    "type" : "pattern",
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "mode" : "ANY",
+        "values" : [ "THE NIGHT SAVIOR", "NIGHT SAVIOR PTY", "PERTH AUS" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "amount",
+        "operator" : "AND",
+        "conditions" : [ {
+          "op" : ">=",
+          "value" : -185.0,
+          "value2" : null
+        }, {
+          "op" : "<=",
+          "value" : -65.0,
+          "value2" : null
+        } ]
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "description" : "All transactions are identical debit card purchases from the same merchant with consistent negative amount range",
+    "source" : "LLM_GENERATED",
+    "status" : "APPROVED",
+    "metadata" : {
+      "trainingSize" : 11,
+      "trainingDateRange" : {
+        "start" : "2025-01-16T00:00:00Z",
+        "end" : "2025-06-11T00:00:00Z"
+      },
+      "exampleTransactionIds" : [ 1639, 1640, 1641, 1642, 1643 ],
+      "matchCount" : 0,
+      "correctCount" : 0,
+      "incorrectCount" : 0,
+      "precision" : null,
+      "conflictsWith" : [ ],
+      "llmModel" : "anthropic/claude-3.5-haiku",
+      "llmReasoning" : "All transactions are identical debit card purchases from the same merchant with consistent negative amount range",
+      "llmConfidence" : 0.95,
+      "notes" : null,
+      "tags" : [ "Merchant Name: THE NIGHT SAVIOR PTY", "Location: PERTH, AUS", "Transaction Type: DEBIT CARD PURCHASE" ]
+    },
+    "createdAt" : "2026-01-12T22:14:59.904328900Z",
+    "updatedAt" : "2026-01-12T22:34:17.083890800Z",
+    "approvedAt" : "2026-01-12T22:34:17.077891100Z",
+    "approvedBy" : null
+  } ],
+  "metadata" : {
+    "createdAt" : "2026-01-01T17:17:08.329490100Z",
+    "lastModifiedAt" : "2026-01-12T22:36:26.652659700Z",
+    "lastModifiedBy" : null,
+    "notes" : null
+  }
+}

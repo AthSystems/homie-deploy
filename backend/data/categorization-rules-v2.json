@@ -1,0 +1,2556 @@
+{
+  "version" : "2.0",
+  "description" : "V2 categorization rules with composite condition support. Supports complex matching logic with keywords, amounts, accounts, flows, dates, linked transactions, and custom scripts.",
+  "rules" : [ {
+    "id" : "atm-withdrawals",
+    "subcategory" : "ATM/Cash Withdrawals",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "withdrawal at", "atm", "cash" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "automotive",
+    "subcategory" : "Automotive",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "cpp", "car", "easypark", "galleria motors", "parking", "repco", "schneider", "super cheap auto", "toyota", "autobarn", "autozone", "mechanic", "service", "repair", "parts" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.85,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "bars-pubs",
+    "subcategory" : "Bars & Pubs",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "ashdabs", "connections nightclub", "connections northbridge", "costieres nimes", "ezra pound", "fibber mcgee", "gage road", "inglewood hotel", "mechanics", "neon palms", "northbridge brewing", "railway hotel", "sneaky tony", "stories", "the aviary", "the beaufort", "the leadlight", "bar", "pub", "brewery", "drinks", "beer", "wine", "the lucky shag" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "beauty-wellbeing",
+    "subcategory" : "Beauty & Well-being",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "aesthetics", "lovisa", "mecca", "sephora", "total brow", "beauty", "cosmetics", "skincare", "haircare", "makeup", "fragrance", "treatment" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.85,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "telecom",
+    "subcategory" : "Cable/Satellite/Telecom",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "telstra", "optus", "vodafone", "mobile", "internet", "broadband", "phone", "data", "plan" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "cafes-coffee",
+    "subcategory" : "Cafes & Coffee",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "blacklist", "roasters", "botanical", "brown spoon", "chu", "community at quay", "five seasons", "grain", "grow", "layers", "miller", "napoli mercato", "sugar & nice", "swan valley", "cafe", "the sparrow's nest", "the woodfired", "baker", "toby's estate", "coffee", "twin peaks", "whisked the rigthwei", "wild", "bakery", "yelo north beach", "espresso", "latte", "beans", "brew" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "car-insurance",
+    "subcategory" : "Car Insurance",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "allianz", "ract", "car insurance", "vehicle insurance", "auto insurance", "premium", "policy" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "clothing-shoes",
+    "subcategory" : "Clothing/Shoes",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "anaconda", "betts", "bonds", "city beach", "dotti", "forever new", "generalpants", "ghanda", "h&m", "liberated brands", "new balance", "nike", "novo shoes", "peter alexander", "rebel", "rip curl", "rock wear", "saint vincent de paul", "sew good", "standbags", "taf", "uniform fashion", "uniqlo", "yd", "adidas", "zara", "cotton on", "apparel", "footwear", "fashion" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.85,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "electricity",
+    "subcategory" : "Electricity",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "synergy", "electricity", "power bill", "energy", "utility", "bill" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "electronics",
+    "subcategory" : "Electronics",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "aliexpress", "alltronics", "computers", "doml", "jaycar", "jb hi fi", "matrix", "new irepairs", "paypal", "technologies", "technology", "the good guys", "electronics", "apple", "samsung", "dell", "gadget", "device" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.85,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "entertainment-recreation",
+    "subcategory" : "Entertainment/Recreation",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "asm global", "perth aren", "alh group", "arenanet", "bcf", "cbus super stadium", "chess", "cinema", "cinemasmatagarup", "cirque du soleil", "cryptotax", "event", "gojo event", "golf", "holey moley", "lightninh in a bo", "mini golf", "nitendo", "park", "reading cinemas", "steam", "steamgames", "the royal", "ticketek", "wildlife", "movie", "theatre", "entertainment", "recreation", "leisure" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.85,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "furniture-homeware",
+    "subcategory" : "Furniture & Homeware",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "aura", "bed bath n'table", "capital retravision", "dusk", "house", "ikea", "kitchen warehouse", "temple and webster", "furniture", "homewares", "decor", "furnishings" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.85,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "gas",
+    "subcategory" : "Gas",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "alinta", "gas", "natural gas", "utility", "bill" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "general-merchandise",
+    "subcategory" : "General Merchandise",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "amazon", "amazon marketplace", "big w", "bigw", "david jones", "fewstone", "kmart", "mydeal", "myer", "pt finnet indonesia", "relay", "spotlight", "target", "the reject shop", "department store", "retail" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.75,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "gifts",
+    "subcategory" : "Gifts",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "bambini", "coo coo", "the playroom", "thingz gifts", "gift shop", "present", "gift" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.85,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "groceries",
+    "subcategory" : "Groceries",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "the good grocer", "aldi", "coles", "crafty meats", "dianella fresh", "european food market", "food plus", "iga", "karrinyup fresh market", "mondo butchers", "spudshed", "tenderwest meats", "the spud ched", "woolies", "woolworths", "supermarket", "grocery", "food", "market" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "gyms-fitness",
+    "subcategory" : "Gyms & Fitness",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "body scanners", "goodlife", "heather crook", "nutrition warehouse", "underarmour", "gym", "fitness", "workout", "training", "exercise" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "healthcare-medical",
+    "subcategory" : "Healthcare/Medical",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "chemist", "chemist warehouse", "clinipath pathology", "hospital", "inglewood pharmacy", "medical", "medical center", "pharmacy", "pharmacy777", "priceline pharmacy", "wiz phy", "doctor", "clinic", "health", "medicine" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "home-renovation-maintenance",
+    "subcategory" : "Home Renovation & Maintenance",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "bunnings", "miaflora garden center", "sydney tools", "u haul", "hardware", "garden", "diy", "tools", "renovation" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.85,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "insurance",
+    "subcategory" : "Insurance",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "bupa", "insurance", "policy", "premium", "coverage" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "insurance-refund",
+    "subcategory" : "Insurance Refund",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "bupa-clm", "insurance", "claim", "refund" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "interest-income",
+    "subcategory" : "Interest Income",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "credit", "interest" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-salary",
+    "subcategory" : "Jude Salary",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "azano", "karridale group", "salary", "sure peopl", "west oz", "deposit", "torquejobs", "wages", "pay roll" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "IN",
+        "values" : [ "xxx-xxx xx9212", "xxx-xxx xx1842" ],
+        "pattern" : null
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-salary",
+    "subcategory" : "Manon Salary",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "la grange", "wages", "priestley's", "salary", "pay", "deposit" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx1842", "xxx-xxx xxxx7894" ],
+        "pattern" : null
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "other-expenses",
+    "subcategory" : "Other Expenses",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "australian federal police", "heres luck lottery", "officeworks", "misc" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.7,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "personal-development",
+    "subcategory" : "Personal Development",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "stacksocial", "course", "training", "education", "learning", "development", "skill" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.85,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "petrol",
+    "subcategory" : "Petrol",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "ampol", "reddy express", "united petroleum", "fuel", "petrol", "gas station", "bp", "shell", "caltex", "diesel" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "public-transport",
+    "subcategory" : "Public Transport",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "smartrider", "transperth", "train", "bus", "transport", "fare" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "rent-paid",
+    "subcategory" : "Rent Paid",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "pam", "trust", "account", "pymt", "rent", "withdrawal", "osko", "inglewood", "perth" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.85,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "rental-income",
+    "subcategory" : "Rental Income",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "daisy", "castellanos", "usuga", "helen", "zekele", "jessica", "munawar", "pauline", "pavot", "pierre-antoine", "pailly", "rent", "bills", "deposit", "osko", "payment" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "restaurants",
+    "subcategory" : "Restaurants",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "eat club", "eatclub", "amore mio", "burgerfreak", "clancys fish bar", "da leo", "de food and beverage", "house of pho", "ischia", "pizzeria", "soul", "restaurant", "dining", "food", "meal" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.85,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "securities-trades",
+    "subcategory" : "Securities Trades",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "neofin", "securities", "trading", "stocks", "shares", "investment", "broker" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "service-charges-fees",
+    "subcategory" : "Service Charges/Fees",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "fee", "fees", "charge", "service", "bank" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "services-supplies",
+    "subcategory" : "Services/Supplies",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "amazon web services", "delaware north", "department of transportation", "dot", "google storage", "ppsr", "aws", "cloud", "service", "hosting" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.85,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "subscriptions-renewals",
+    "subcategory" : "Subscriptions/Renewals",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "membership", "acces plateforme", "amznprimeau", "chatgpt", "crunchyroll", "google ellation", "google one bengaroo", "netflix", "openai", "prime", "spotify", "uber*one", "subscription", "monthly", "renewal" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "takeaway-snacks",
+    "subcategory" : "Takeaway & Snacks",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "bon appetit", "bp", "burger", "chicho gelato", "creamery", "exipnos", "gelateria", "gelato", "gusto gelato", "hungry jacks", "kebab", "kfc", "mcdonalds", "medya king kebab", "pizza", "red rooster", "soul origin", "subway", "sushi", "takeaway", "thai", "zambrero", "uber*eats", "eats", "sure plan", "fast food", "snack", "quick" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.85,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "taxes",
+    "subcategory" : "Taxes",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "ato", "tax", "taxes", "revenue", "government" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "taxi-rideshare",
+    "subcategory" : "Taxi & Rideshare",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "uber*trip", "uber", "taxi", "rideshare", "lyft", "didi", "ride", "transport" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "transfer-in",
+    "subcategory" : "Transfer In",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "revolut", "revo", "transfer in", "deposit", "incoming" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.8,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "travel-holidays",
+    "subcategory" : "Travel/Holidays",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "air asia", "airbnb", "booking.com", "emirates", "etihad", "expedia", "garuda", "jetstar", "malaysia airlines", "qantas", "scoot", "singapore airlines", "skyscanner", "virgin", "xx5739", "hotel", "flight", "travel", "holiday", "accommodation" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "water",
+    "subcategory" : "Water",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "payment", "osko", "pam", "trust", "water", "corp", "bill" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-to-saving-west1",
+    "subcategory" : "Jude → Jude Saving",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx9212" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "withdrawal", "lif" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-to-saving-west2",
+    "subcategory" : "Jude → Jude Saving",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx9637" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "IN"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "deposit", "cho" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "saving-to-jude-west1",
+    "subcategory" : "Jude Saving → Jude",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx9637" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "withdrawal", "cho" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "saving-to-jude-west2",
+    "subcategory" : "Jude Saving → Jude",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx9212" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "IN"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "deposit", "lif" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-to-saving-mqb",
+    "subcategory" : "Jude → Jude Saving",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxxx4442" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "to linked account xx4459", "savings", "internal", "transfer" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-to-saving-mqb2",
+    "subcategory" : "Jude → Jude Saving",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxxx4459" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "IN"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "from linked account xx4442", "savings", "internal", "transfer" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-west-to-mbq",
+    "subcategory" : "Jude ↔ Jude",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx9212" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "WITHDRAWAL-OSKO PAYMENT", "Jude Personal", "Judicael Leynaud" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-west-to-mbq2",
+    "subcategory" : "Jude ↔ Jude",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxxx4442" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "IN"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "From JUDICAEL LEYNAUD", "Jude Personal", "MQB Savings" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "transit-to-securities1",
+    "subcategory" : "Transit → Securities",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxxx1161" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "IN"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "From linked account xx5706", "Securities Funding" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "transit-to-securities2",
+    "subcategory" : "Transit → Securities",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxxx5706" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "To linked account xx1161", "Securities Funding" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "common-to-transit-osko",
+    "subcategory" : "Common → Transit",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx1842" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "WITHDRAWAL-OSKO PAYMENT", "Transit Share", "Judicael LEYNAUD" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "common-to-transit-from",
+    "subcategory" : "Common → Transit",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxxx5706" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "IN"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "From JUDICAEL LEYNAUD", "Transit Share" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "common-to-manon-osko",
+    "subcategory" : "Common → Manon",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx1842" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "WITHDRAWAL-OSKO PAYMENT Manon Guyot", "Pocket", "waiver" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "common-to-manon-fast",
+    "subcategory" : "Common → Manon",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxx7894" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "IN"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "Fast Transfer From JUDICAEL LEYNAUD", "Pocket", "waiver" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-to-common1",
+    "subcategory" : "Manon → Common",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxx7894" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "transfer to", "manon guyot", "commun account" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-to-common2",
+    "subcategory" : "Manon → Common",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx1842" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "IN"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "deposit-osko payment", "manon guyot", "commun account" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-to-saving1",
+    "subcategory" : "Manon → Manon Saving",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxx7894" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "transfer to xx3987", "netbank", "commbank", "savings", "goal" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-to-saving2",
+    "subcategory" : "Manon → Manon Saving",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxx3987" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "IN"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "transfer from xx7894", "netbank", "commbank", "savings", "goal" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-saving-to-manon1",
+    "subcategory" : "Manon Saving → Manon",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxx3987" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "transfer to xx7894", "commbank", "netbank" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-saving-to-manon2",
+    "subcategory" : "Manon Saving → Manon",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxx7894" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "IN"
+      }, {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "transfer from xx3987", "commbank", "netbank" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-saving-to-manon",
+    "subcategory" : "Jude Saving → Manon",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx9637" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xxxx7894" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-saving-to-manon-saving",
+    "subcategory" : "Jude Saving → Manon Saving",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx9637" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xxxx3987" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "common-to-jude",
+    "subcategory" : "Common → Jude",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx1842" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xx9212" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "common-to-manon",
+    "subcategory" : "Common → Manon",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx1842" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xxxx7894" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "common-to-manon-saving",
+    "subcategory" : "Common → Manon Saving",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx1842" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xxxx3987" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "common-to-jude-saving",
+    "subcategory" : "Common → Jude Saving",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx1842" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xx9637" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-to-common",
+    "subcategory" : "Jude → Common",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx9212" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xx1842" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-to-manon",
+    "subcategory" : "Jude → Manon",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx9212" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xxxx7894" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-to-manon-saving",
+    "subcategory" : "Jude → Manon Saving",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx9212" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xxxx3987" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-to-jude-saving",
+    "subcategory" : "Jude → Jude Saving",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx9212" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xx9637" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-to-jude",
+    "subcategory" : "Manon → Jude",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxx7894" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xx9212" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-to-common",
+    "subcategory" : "Manon → Common",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxx7894" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xx1842" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-to-manon-saving",
+    "subcategory" : "Manon → Manon Saving",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxx7894" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xxxx3987" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-to-jude-saving",
+    "subcategory" : "Manon → Jude Saving",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxx7894" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xx9637" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-saving-to-jude",
+    "subcategory" : "Manon Saving → Jude",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxx3987" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xx9212" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-saving-to-manon",
+    "subcategory" : "Manon Saving → Manon",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxx3987" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xxxx7894" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-saving-to-common",
+    "subcategory" : "Manon Saving → Common",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxx3987" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xx1842" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "manon-saving-to-jude-saving",
+    "subcategory" : "Manon Saving → Jude Saving",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxx3987" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xx9637" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-saving-to-jude",
+    "subcategory" : "Jude Saving → Jude",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx9637" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xx9212" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-saving-to-common",
+    "subcategory" : "Jude Saving → Common",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx9637" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xx1842" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-mqb-to-saving",
+    "subcategory" : "Jude → Jude Saving",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxxx4442" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xxxxx4459" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-saving-to-mqb",
+    "subcategory" : "Jude Saving → Jude",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxxx4459" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xxxxx4442" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-mqb-to-west",
+    "subcategory" : "Jude ↔ Jude",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxxx4442" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xx9212" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-west-to-mqb",
+    "subcategory" : "Jude ↔ Jude",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx9212" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xxxxx4442" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "transit-to-securities",
+    "subcategory" : "Transit → Securities",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxxx5706" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xxxxx1161" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "securities-to-transit",
+    "subcategory" : "Securities → Transit",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxxx1161" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xxxxx5706" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "transit-to-common",
+    "subcategory" : "Transit → Common",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxxx5706" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xx1842" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "common-to-transit",
+    "subcategory" : "Common → Transit",
+    "type" : "COMPOSITE",
+    "priority" : 200,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xx1842" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      }, {
+        "type" : "linked",
+        "required" : true,
+        "conditions" : {
+          "operator" : "AND",
+          "criteria" : [ {
+            "type" : "account",
+            "operator" : "AND",
+            "mode" : "EXACT",
+            "values" : [ "xxx-xxx xxxxx5706" ],
+            "pattern" : null
+          }, {
+            "type" : "flow",
+            "direction" : "IN"
+          } ]
+        }
+      } ]
+    },
+    "confidence" : 0.95,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "transfer-to-ek-mielczareck",
+    "subcategory" : "Transfer Out",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "Transfer", "To", "E K Mielczareck" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "cpp-parking",
+    "subcategory" : "Automotive",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "CPP", "WA", "AUS" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "mister-minit",
+    "subcategory" : "Services/Supplies",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "Mister", "Minit" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "secchi",
+    "subcategory" : "Restaurants",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "LS", "The", "Colony", "of", "Midla" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "seasonal-brewery",
+    "subcategory" : "Bars & Pubs",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "THE", "SEASONAL", "BREWI" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "perth-arena",
+    "subcategory" : "Entertainment/Recreation",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "PERTH", "AREN" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "clay-make-studio",
+    "subcategory" : "Entertainment/Recreation",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "CLAY", "MAKE", "STUDIO" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "myer",
+    "subcategory" : "General Merchandise",
+    "type" : "COMPOSITE",
+    "priority" : 100,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "MYER" ],
+        "caseInsensitive" : true
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "sodeco",
+    "subcategory" : "Takeaway & Snacks",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ALL",
+        "values" : [ "SODEXO", "REMOTE", "AU" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "EXACT",
+        "values" : [ "xxx-xxx xxxxx4442" ],
+        "pattern" : null
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "jude-mbq-interest",
+    "subcategory" : "Interest Income",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "Payment" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "IN",
+        "values" : [ "xxx-xxx xxxxx4442", "xxx-xxx xxxxx4459" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "IN"
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  }, {
+    "id" : "vapes",
+    "subcategory" : "Tobacco",
+    "type" : "COMPOSITE",
+    "priority" : 150,
+    "conditions" : {
+      "operator" : "AND",
+      "criteria" : [ {
+        "type" : "keywords",
+        "operator" : "AND",
+        "mode" : "ANY",
+        "values" : [ "THE NIGHT SAVIOR CONVE NORTHBRIDGE", "LOKI CONVENIENCE STO INGLEWOOD" ],
+        "caseInsensitive" : true
+      }, {
+        "type" : "account",
+        "operator" : "AND",
+        "mode" : "IN",
+        "values" : [ "xxx-xxx xxxxx4442", "xxx-xxx xx9212" ],
+        "pattern" : null
+      }, {
+        "type" : "flow",
+        "direction" : "OUT"
+      } ]
+    },
+    "confidence" : 0.9,
+    "enabled" : true,
+    "metadata" : null
+  } ]
+}

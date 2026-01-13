@@ -1,0 +1,1034 @@
+{
+  "version": "1.0",
+  "description": "Categorization rules for transaction classification. Supports LIST (keyword matching), REGEX (pattern matching with account context), and ACCOUNT (direct account pair matching).",
+  "listRules": [
+    {
+      "id": "atm-withdrawals",
+      "subcategory": "ATM/Cash Withdrawals",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["withdrawal at", "atm"],
+        "optional": ["cash"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "automotive",
+      "subcategory": "Automotive",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["car", "easypark", "galleria motors", "parking", "repco", "schneider", "super cheap auto", "toyota", "autobarn", "autozone", "mechanic"],
+        "optional": ["service", "repair", "parts"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "bars-pubs",
+      "subcategory": "Bars & Pubs",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["ashdabs", "connections nightclub", "connections northbridge", "costieres nimes", "ezra pound", "fibber mcgee", "gage road", "inglewood hotel", "mechanics", "neon palms", "northbridge brewing", "railway hotel", "sneaky tony", "stories", "the aviary", "the beaufort", "the leadlight", "bar", "pub", "brewery"],
+        "optional": ["drinks", "beer", "wine"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "beauty-wellbeing",
+      "subcategory": "Beauty & Well-being",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["aesthetics", "lovisa", "mecca", "sephora", "total brow", "beauty", "cosmetics", "skincare", "haircare"],
+        "optional": ["makeup", "fragrance", "treatment"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "telecom",
+      "subcategory": "Cable/Satellite/Telecom",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["telstra", "optus", "vodafone", "mobile", "internet", "broadband"],
+        "optional": ["phone", "data", "plan"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "cafes-coffee",
+      "subcategory": "Cafes & Coffee",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["blacklist", "roasters", "botanical", "brown spoon", "chu", "community at quay", "five seasons", "grain", "grow", "layers", "miller", "napoli mercato", "sugar & nice", "swan valley", "cafe", "the sparrow's nest", "the woodfired", "baker", "toby's estate", "coffee", "twin peaks", "whisked the rigthwei", "wild", "bakery", "yelo north beach", "espresso", "latte"],
+        "optional": ["beans", "brew"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "car-insurance",
+      "subcategory": "Car Insurance",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["allianz", "ract", "car insurance", "vehicle insurance", "auto insurance"],
+        "optional": ["premium", "policy"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "clothing-shoes",
+      "subcategory": "Clothing/Shoes",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["anaconda", "betts", "bonds", "city beach", "dotti", "forever new", "generalpants", "ghanda", "h&m", "liberated brands", "new balance", "nike", "novo shoes", "peter alexander", "rebel", "rip curl", "rock wear", "saint vincent de paul", "sew good", "standbags", "taf", "uniform fashion", "uniqlo", "yd", "adidas", "zara", "cotton on"],
+        "optional": ["apparel", "footwear", "fashion"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "electricity",
+      "subcategory": "Electricity",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["synergy", "electricity", "power bill", "energy"],
+        "optional": ["utility", "bill"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "electronics",
+      "subcategory": "Electronics",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["aliexpress", "alltronics", "computers", "doml", "jaycar", "jb hi fi", "matrix", "new irepairs", "paypal", "technologies", "technology", "the good guys", "electronics", "apple", "samsung", "dell"],
+        "optional": ["gadget", "device"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "entertainment-recreation",
+      "subcategory": "Entertainment/Recreation",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["alh group", "arenanet", "bcf", "cbus super stadium", "chess", "cinema", "cinemasmatagarup", "cirque du soleil", "cryptotax", "event", "gojo event", "golf", "holey moley", "lightninh in a bo", "mini golf", "nitendo", "park", "reading cinemas", "steam", "steamgames", "the royal", "ticketek", "wildlife", "movie", "theatre"],
+        "optional": ["entertainment", "recreation", "leisure"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "furniture-homeware",
+      "subcategory": "Furniture & Homeware",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["aura", "bed bath n'table", "capital retravision", "dusk", "house", "ikea", "kitchen warehouse", "temple and webster", "furniture", "homewares"],
+        "optional": ["decor", "furnishings"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "gas",
+      "subcategory": "Gas",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["alinta", "gas", "natural gas"],
+        "optional": ["utility", "bill"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "general-merchandise",
+      "subcategory": "General Merchandise",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["amazon", "amazon marketplace", "big w", "bigw", "david jones", "fewstone", "kmart", "mydeal", "myer", "pt finnet indonesia", "relay", "spotlight", "target", "the reject shop"],
+        "optional": ["department store", "retail"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "gifts",
+      "subcategory": "Gifts",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["bambini", "coo coo", "the playroom", "thingz gifts", "gift shop"],
+        "optional": ["present", "gift"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "groceries",
+      "subcategory": "Groceries",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["aldi", "coles", "crafty meats", "dianella fresh", "european food market", "food plus", "iga", "karrinyup fresh market", "mondo butchers", "spudshed", "tenderwest meats", "the spud ched", "woolies", "woolworths", "supermarket", "grocery"],
+        "optional": ["food", "market"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "gyms-fitness",
+      "subcategory": "Gyms & Fitness",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["body scanners", "goodlife", "heather crook", "nutrition warehouse", "underarmour", "gym", "fitness", "workout"],
+        "optional": ["training", "exercise"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "healthcare-medical",
+      "subcategory": "Healthcare/Medical",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["chemist", "chemist warehouse", "clinipath pathology", "hospital", "inglewood pharmacy", "medical", "medical center", "pharmacy", "pharmacy777", "priceline pharmacy", "wiz phy", "doctor", "clinic"],
+        "optional": ["health", "medicine"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "home-renovation-maintenance",
+      "subcategory": "Home Renovation & Maintenance",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["bunnings", "miaflora garden center", "sydney tools", "u haul", "hardware", "garden"],
+        "optional": ["diy", "tools", "renovation"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "insurance",
+      "subcategory": "Insurance",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["bupa", "insurance", "policy"],
+        "optional": ["premium", "coverage"],
+        "forbidden": ["refund", "return", "claim"],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "insurance-refund",
+      "subcategory": "Insurance Refund",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["bupa-clm", "insurance", "claim", "refund"],
+        "optional": [],
+        "forbidden": [],
+        "min": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "interest-income",
+      "subcategory": "Interest Income",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["credit", "interest"],
+        "optional": ["earned", "deposit"],
+        "forbidden": [],
+        "min": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-salary",
+      "subcategory": "Jude Salary",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["azano", "karridale group", "salary", "sure peopl", "west oz", "deposit", "torquejobs"],
+        "optional": ["wages", "pay"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-salary",
+      "subcategory": "Manon Salary",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["la grange", "wages", "priestley's", "salary"],
+        "optional": ["pay", "deposit"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "other-expenses",
+      "subcategory": "Other Expenses",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["australian federal police", "heres luck lottery", "officeworks", "misc"],
+        "optional": [],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "personal-development",
+      "subcategory": "Personal Development",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["stacksocial", "course", "training", "education", "learning"],
+        "optional": ["development", "skill"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "petrol",
+      "subcategory": "Petrol",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["ampol", "reddy express", "united petroleum", "fuel", "petrol", "gas station", "bp", "shell", "caltex"],
+        "optional": ["diesel"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "public-transport",
+      "subcategory": "Public Transport",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["smartrider", "transperth", "train", "bus"],
+        "optional": ["transport", "fare"],
+        "forbidden": ["refund", "return"],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "rent-paid",
+      "subcategory": "Rent Paid",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["pam", "trust", "account", "pymt", "rent", "withdrawal", "osko", "inglewood", "perth"],
+        "optional": [],
+        "forbidden": ["airpor", "airport"],
+        "min": 3
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "rental-income",
+      "subcategory": "Rental Income",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["daisy", "castellanos", "usuga", "helen", "zekele", "jessica", "munawar", "pauline", "pavot", "pierre-antoine", "pailly", "rent", "bills", "deposit", "osko", "payment"],
+        "optional": [],
+        "forbidden": ["airpor", "airport"],
+        "min": 3
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "restaurants",
+      "subcategory": "Restaurants",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["amore mio", "burgerfreak", "clancys fish bar", "da leo", "de food and beverage", "house of pho", "ischia", "pizzeria", "soul", "restaurant", "dining"],
+        "optional": ["food", "meal"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "securities-trades",
+      "subcategory": "Securities Trades",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["neofin", "securities", "trading", "stocks", "shares"],
+        "optional": ["investment", "broker"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "service-charges-fees",
+      "subcategory": "Service Charges/Fees",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["fee", "fees", "charge"],
+        "optional": ["service", "bank"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "services-supplies",
+      "subcategory": "Services/Supplies",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["amazon web services", "delaware north", "department of transportation", "dot", "google storage", "ppsr", "aws", "cloud"],
+        "optional": ["service", "hosting"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "subscriptions-renewals",
+      "subcategory": "Subscriptions/Renewals",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["acces plateforme", "amznprimeau", "chatgpt", "crunchyroll", "google ellation", "google one bengaroo", "netflix", "openai", "prime", "spotify", "uber*one", "subscription"],
+        "optional": ["monthly", "renewal"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "takeaway-snacks",
+      "subcategory": "Takeaway & Snacks",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["bon appetit", "bp", "burger", "chicho gelato", "creamery", "eat club", "eatclub", "exipnos", "gelateria", "gelato", "gusto gelato", "hungry jacks", "kebab", "kfc", "mcdonalds", "medya king kebab", "pizza", "red rooster", "soul origin", "subway", "sushi", "takeaway", "thai", "zambrero", "uber*eats", "eats", "sure plan", "fast food"],
+        "optional": ["snack", "quick"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "taxes",
+      "subcategory": "Taxes",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["ato", "tax", "taxes"],
+        "optional": ["revenue", "government"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "taxi-rideshare",
+      "subcategory": "Taxi & Rideshare",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["uber*trip", "uber", "taxi", "rideshare", "lyft", "didi"],
+        "optional": ["ride", "transport"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "transfer-in",
+      "subcategory": "Transfer In",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["revolut", "revo", "transfer in"],
+        "optional": ["deposit", "incoming"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "travel-holidays",
+      "subcategory": "Travel/Holidays",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["air asia", "airbnb", "booking.com", "emirates", "etihad", "expedia", "garuda", "jetstar", "malaysia airlines", "qantas", "scoot", "singapore airlines", "skyscanner", "virgin", "xx5739", "hotel", "flight"],
+        "optional": ["travel", "holiday", "accommodation"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "water",
+      "subcategory": "Water",
+      "type": "LIST",
+      "clauses": {
+        "mandatory": ["payment", "osko", "pam", "trust", "water", "corp", "bill"],
+        "optional": [],
+        "forbidden": [],
+        "min": 3
+      },
+      "confidence": 0.9
+    }
+  ],
+  "regexRules": [
+    {
+      "id": "jude-to-saving-west1",
+      "subcategory": "Jude → Jude Saving",
+      "type": "REGEX",
+      "account": "xxx-xxx xx9212",
+      "flow": "out",
+      "clauses": {
+        "mandatory": ["withdrawal", "lif"],
+        "optional": ["tfr", "westpac"],
+        "forbidden": ["revolut", "revo"],
+        "min": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-to-saving-west2",
+      "subcategory": "Jude → Jude Saving",
+      "type": "REGEX",
+      "account": "xxx-xxx xx9637",
+      "flow": "in",
+      "clauses": {
+        "mandatory": ["deposit", "cho"],
+        "optional": ["tfr", "westpac"],
+        "forbidden": ["revolut", "revo"],
+        "min": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "saving-to-jude-west1",
+      "subcategory": "Jude Saving → Jude",
+      "type": "REGEX",
+      "account": "xxx-xxx xx9637",
+      "flow": "out",
+      "clauses": {
+        "mandatory": ["withdrawal", "cho"],
+        "optional": ["tfr", "westpac"],
+        "forbidden": ["revolut", "revo"],
+        "min": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "saving-to-jude-west2",
+      "subcategory": "Jude Saving → Jude",
+      "type": "REGEX",
+      "account": "xxx-xxx xx9212",
+      "flow": "in",
+      "clauses": {
+        "mandatory": ["deposit", "lif"],
+        "optional": ["tfr", "westpac"],
+        "forbidden": ["revolut", "revo"],
+        "min": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-to-saving-mqb",
+      "subcategory": "Jude → Jude Saving",
+      "type": "REGEX",
+      "account": "xxx-xxx xxxxx4442",
+      "flow": "out",
+      "clauses": {
+        "mandatory": ["to linked account xx4459"],
+        "optional": ["savings", "internal", "transfer"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-to-saving-mqb2",
+      "subcategory": "Jude → Jude Saving",
+      "type": "REGEX",
+      "account": "xxx-xxx xxxxx4459",
+      "flow": "in",
+      "clauses": {
+        "mandatory": ["from linked account xx4442"],
+        "optional": ["savings", "internal", "transfer"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-west-to-mbq",
+      "subcategory": "Jude ↔ Jude",
+      "type": "REGEX",
+      "account": "xxx-xxx xx9212",
+      "flow": "out",
+      "clauses": {
+        "mandatory": ["WITHDRAWAL-OSKO PAYMENT"],
+        "optional": ["Jude Personal", "Judicael Leynaud"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "jude-west-to-mbq2",
+      "subcategory": "Jude ↔ Jude",
+      "type": "REGEX",
+      "account": "xxx-xxx xxxxx4442",
+      "flow": "in",
+      "clauses": {
+        "mandatory": ["From JUDICAEL LEYNAUD"],
+        "optional": ["Jude Personal", "MQB Savings"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "transit-to-securities1",
+      "subcategory": "Transit → Securities",
+      "type": "REGEX",
+      "account": "xxx-xxx xxxxx1161",
+      "flow": "in",
+      "clauses": {
+        "mandatory": ["From linked account xx5706"],
+        "optional": ["Securities Funding"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "transit-to-securities2",
+      "subcategory": "Transit → Securities",
+      "type": "REGEX",
+      "account": "xxx-xxx xxxxx5706",
+      "flow": "out",
+      "clauses": {
+        "mandatory": ["To linked account xx1161"],
+        "optional": ["Securities Funding"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "common-to-transit-osko",
+      "subcategory": "Common → Transit",
+      "type": "REGEX",
+      "account": "xxx-xxx xx1842",
+      "flow": "out",
+      "clauses": {
+        "mandatory": ["WITHDRAWAL-OSKO PAYMENT", "Transit Share"],
+        "optional": ["Judicael LEYNAUD", "Transit Share"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "common-to-transit-from",
+      "subcategory": "Common → Transit",
+      "type": "REGEX",
+      "account": "xxx-xxx xxxxx5706",
+      "flow": "in",
+      "clauses": {
+        "mandatory": ["From JUDICAEL LEYNAUD", "Transit Share"],
+        "optional": ["Transit Share"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "common-to-manon-osko",
+      "subcategory": "Common → Manon",
+      "type": "REGEX",
+      "account": "xxx-xxx xx1842",
+      "flow": "out",
+      "clauses": {
+        "mandatory": ["WITHDRAWAL-OSKO PAYMENT Manon Guyot"],
+        "optional": ["Pocket", "waiver"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "common-to-manon-fast",
+      "subcategory": "Common → Manon",
+      "type": "REGEX",
+      "account": "xxx-xxx xxxx7894",
+      "flow": "in",
+      "clauses": {
+        "mandatory": ["Fast Transfer From JUDICAEL LEYNAUD"],
+        "optional": ["Pocket", "waiver"],
+        "forbidden": [],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-to-common1",
+      "subcategory": "Manon → Common",
+      "type": "REGEX",
+      "account": "xxx-xxx xxxx7894",
+      "flow": "out",
+      "clauses": {
+        "mandatory": ["transfer to", "manon guyot", "commun account"],
+        "optional": [],
+        "forbidden": ["revolut", "revo"],
+        "min": 3
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-to-common2",
+      "subcategory": "Manon → Common",
+      "type": "REGEX",
+      "account": "xxx-xxx xx1842",
+      "flow": "in",
+      "clauses": {
+        "mandatory": ["deposit-osko payment", "manon guyot", "commun account"],
+        "optional": [],
+        "forbidden": ["revolut", "revo"],
+        "min": 3
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-to-saving1",
+      "subcategory": "Manon → Manon Saving",
+      "type": "REGEX",
+      "account": "xxx-xxx xxxx7894",
+      "flow": "out",
+      "clauses": {
+        "mandatory": ["transfer to xx3987"],
+        "optional": ["netbank", "commbank", "savings", "goal"],
+        "forbidden": ["revolut", "revo"],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-to-saving2",
+      "subcategory": "Manon → Manon Saving",
+      "type": "REGEX",
+      "account": "xxx-xxx xxxx3987",
+      "flow": "in",
+      "clauses": {
+        "mandatory": ["transfer from xx7894"],
+        "optional": ["netbank", "commbank", "savings", "goal"],
+        "forbidden": ["revolut", "revo"],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-saving-to-manon1",
+      "subcategory": "Manon Saving → Manon",
+      "type": "REGEX",
+      "account": "xxx-xxx xxxx3987",
+      "flow": "out",
+      "clauses": {
+        "mandatory": ["transfer to xx7894"],
+        "optional": ["commbank", "netbank"],
+        "forbidden": ["revolut", "revo"],
+        "min": 1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-saving-to-manon2",
+      "subcategory": "Manon Saving → Manon",
+      "type": "REGEX",
+      "account": "xxx-xxx xxxx7894",
+      "flow": "in",
+      "clauses": {
+        "mandatory": ["transfer from xx3987"],
+        "optional": ["commbank", "netbank"],
+        "forbidden": ["revolut", "revo"],
+        "min": 1
+      },
+      "confidence": 0.95
+    }
+  ],
+  "accountRules": [
+    {
+      "id": "jude-saving-to-manon",
+      "subcategory": "Jude Saving → Manon",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xx9637",
+      "linkedAccount": "xxx-xxx xxxx7894",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-saving-to-manon-saving",
+      "subcategory": "Jude Saving → Manon Saving",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xx9637",
+      "linkedAccount": "xxx-xxx xxxx3987",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "common-to-jude",
+      "subcategory": "Common → Jude",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xx1842",
+      "linkedAccount": "xxx-xxx xx9212",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "common-to-manon",
+      "subcategory": "Common → Manon",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xx1842",
+      "linkedAccount": "xxx-xxx xxxx7894",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "common-to-manon-saving",
+      "subcategory": "Common → Manon Saving",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xx1842",
+      "linkedAccount": "xxx-xxx xxxx3987",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "common-to-jude-saving",
+      "subcategory": "Common → Jude Saving",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xx1842",
+      "linkedAccount": "xxx-xxx xx9637",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-to-common",
+      "subcategory": "Jude → Common",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xx9212",
+      "linkedAccount": "xxx-xxx xx1842",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-to-manon",
+      "subcategory": "Jude → Manon",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xx9212",
+      "linkedAccount": "xxx-xxx xxxx7894",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-to-manon-saving",
+      "subcategory": "Jude → Manon Saving",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xx9212",
+      "linkedAccount": "xxx-xxx xxxx3987",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-to-jude-saving",
+      "subcategory": "Jude → Jude Saving",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xx9212",
+      "linkedAccount": "xxx-xxx xx9637",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-to-jude",
+      "subcategory": "Manon → Jude",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xxxx7894",
+      "linkedAccount": "xxx-xxx xx9212",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-to-common",
+      "subcategory": "Manon → Common",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xxxx7894",
+      "linkedAccount": "xxx-xxx xx1842",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-to-manon-saving",
+      "subcategory": "Manon → Manon Saving",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xxxx7894",
+      "linkedAccount": "xxx-xxx xxxx3987",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-to-jude-saving",
+      "subcategory": "Manon → Jude Saving",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xxxx7894",
+      "linkedAccount": "xxx-xxx xx9637",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-saving-to-jude",
+      "subcategory": "Manon Saving → Jude",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xxxx3987",
+      "linkedAccount": "xxx-xxx xx9212",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-saving-to-manon",
+      "subcategory": "Manon Saving → Manon",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xxxx3987",
+      "linkedAccount": "xxx-xxx xxxx7894",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-saving-to-common",
+      "subcategory": "Manon Saving → Common",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xxxx3987",
+      "linkedAccount": "xxx-xxx xx1842",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "manon-saving-to-jude-saving",
+      "subcategory": "Manon Saving → Jude Saving",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xxxx3987",
+      "linkedAccount": "xxx-xxx xx9637",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-saving-to-jude",
+      "subcategory": "Jude Saving → Jude",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xx9637",
+      "linkedAccount": "xxx-xxx xx9212",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-saving-to-common",
+      "subcategory": "Jude Saving → Common",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xx9637",
+      "linkedAccount": "xxx-xxx xx1842",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-mqb-to-saving",
+      "subcategory": "Jude → Jude Saving",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xxxxx4442",
+      "linkedAccount": "xxx-xxx xxxxx4459",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-saving-to-mqb",
+      "subcategory": "Jude Saving → Jude",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xxxxx4459",
+      "linkedAccount": "xxx-xxx xxxxx4442",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-mqb-to-west",
+      "subcategory": "Jude ↔ Jude",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xxxxx4442",
+      "linkedAccount": "xxx-xxx xx9212",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "jude-west-to-mqb",
+      "subcategory": "Jude ↔ Jude",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xx9212",
+      "linkedAccount": "xxx-xxx xxxxx4442",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "transit-to-securities",
+      "subcategory": "Transit → Securities",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xxxxx5706",
+      "linkedAccount": "xxx-xxx xxxxx1161",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "securities-to-transit",
+      "subcategory": "Securities → Transit",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xxxxx1161",
+      "linkedAccount": "xxx-xxx xxxxx5706",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "transit-to-common",
+      "subcategory": "Transit → Common",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xxxxx5706",
+      "linkedAccount": "xxx-xxx xx1842",
+      "flow": "out",
+      "confidence": 0.95
+    },
+    {
+      "id": "common-to-transit",
+      "subcategory": "Common → Transit",
+      "type": "ACCOUNT",
+      "account": "xxx-xxx xx1842",
+      "linkedAccount": "xxx-xxx xxxxx5706",
+      "flow": "out",
+      "confidence": 0.95
+    }
+  ]
+}

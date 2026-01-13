@@ -1,0 +1,65 @@
+services:
+  homie-backend:
+    build: ./backend
+    image: homie-backend:${VERSION:-2.0.1}
+    container_name: homie-backend
+    restart: unless-stopped
+    networks:
+      - homie
+    ports:
+      - "${BACKEND_PORT:-15010}:8080"
+    volumes:
+      - /srv/nas/docker/homie/files:/app/data/files
+      - /srv/nas/docker/homie/data:/app/data/external:ro
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      # Database
+      SPRING_R2DBC_URL: "r2dbc:postgresql://${DB_HOST}:${DB_PORT:-5432}/${DB_NAME}"
+      SPRING_R2DBC_USERNAME: "${DB_USERNAME}"
+      SPRING_R2DBC_PASSWORD: "${DB_PASSWORD}"
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://${DB_HOST}:${DB_PORT:-5432}/${DB_NAME}"
+      SPRING_DATASOURCE_USERNAME: "${DB_USERNAME}"
+      SPRING_DATASOURCE_PASSWORD: "${DB_PASSWORD}"
+      # CORS
+      CORS_ALLOWED_ORIGINS: "${CORS_ALLOWED_ORIGINS}"
+      # LLM - OpenRouter
+      OPENROUTER_API_KEY: "${OPENROUTER_API_KEY}"
+      OPENROUTER_BASE_URL: "${OPENROUTER_BASE_URL:-https://openrouter.ai/api/v1}"
+      # LLM - Ollama
+      OLLAMA_BASE_URL: "${OLLAMA_BASE_URL:-http://host.docker.internal:11434}"
+      # LLM Provider Selection
+      LLM_SIMILARITY_PROVIDER: "${LLM_SIMILARITY_PROVIDER:-ollama}"
+      LLM_SIMILARITY_MODEL: "${LLM_SIMILARITY_MODEL:-qwen2.5:14b-instruct}"
+      LLM_CATEGORIZATION_PROVIDER: "${LLM_CATEGORIZATION_PROVIDER:-ollama}"
+      LLM_CATEGORIZATION_MODEL: "${LLM_CATEGORIZATION_MODEL:-qwen2.5:14b-instruct}"
+      LLM_TIE_BREAKER_PROVIDER: "${LLM_TIE_BREAKER_PROVIDER:-ollama}"
+      LLM_TIE_BREAKER_MODEL: "${LLM_TIE_BREAKER_MODEL:-qwen2.5:14b-instruct}"
+      LLM_RULE_LEARNING_PROVIDER: "${LLM_RULE_LEARNING_PROVIDER:-openrouter}"
+      LLM_RULE_LEARNING_MODEL: "${LLM_RULE_LEARNING_MODEL:-anthropic/claude-3.5-haiku}"
+      # Strategy
+      CATEGORIZATION_STRATEGY: "${CATEGORIZATION_STRATEGY:-RULES_WITH_LLM_FALLBACK}"
+      # File storage
+      HOMIE_FILES_STORAGE_ROOT_DIR: "/app/data/files"
+
+  homie-frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: "${NEXT_PUBLIC_API_URL}"
+    image: homie-frontend:${VERSION:-2.0.1}
+    container_name: homie-frontend
+    restart: unless-stopped
+    networks:
+      - homie
+    ports:
+      - "${FRONTEND_PORT:-11010}:3000"
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+    depends_on:
+      - homie-backend
+
+networks:
+  homie:
+    external: true
