@@ -1,6 +1,7 @@
 FROM eclipse-temurin:21-jre-alpine
 
-RUN addgroup -g 1000 -S homie && adduser -u 1000 -S homie -G homie
+RUN apk add --no-cache curl && \
+    addgroup -g 1000 -S homie && adduser -u 1000 -S homie -G homie
 
 WORKDIR /app
 
@@ -17,7 +18,7 @@ USER homie
 EXPOSE 8080
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-    CMD wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit 1
+    CMD curl -f http://localhost:8080/actuator/health || exit 1
 
 ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"
 
