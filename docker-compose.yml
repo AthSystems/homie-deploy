@@ -1,7 +1,6 @@
 services:
   homie-backend:
     build: ./backend
-    image: homie-backend:${VERSION:-2.0.1}
     container_name: homie-backend
     restart: unless-stopped
     networks:
@@ -47,7 +46,6 @@ services:
       context: ./frontend
       args:
         NEXT_PUBLIC_API_URL: "${NEXT_PUBLIC_API_URL}"
-    image: homie-frontend:${VERSION:-2.0.1}
     container_name: homie-frontend
     restart: unless-stopped
     networks:
