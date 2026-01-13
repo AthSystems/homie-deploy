@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { apiClient } from './client';
 
-const API_BASE_URL = 'http://localhost:8080/api/settings';
+const API_PATH = '/settings';
 
 export interface OperationConfig {
   provider: string;
@@ -72,11 +73,8 @@ export function useSettings() {
   return useQuery<AllSettings>({
     queryKey: ['settings'],
     queryFn: async () => {
-      const response = await fetch(`${API_BASE_URL}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch settings');
-      }
-      return response.json();
+      const response = await apiClient.get(API_PATH);
+      return response.data;
     },
   });
 }
@@ -86,11 +84,8 @@ export function useLLMSettings() {
   return useQuery<LLMSettings>({
     queryKey: ['settings', 'llm'],
     queryFn: async () => {
-      const response = await fetch(`${API_BASE_URL}/llm`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch LLM settings');
-      }
-      return response.json();
+      const response = await apiClient.get(`${API_PATH}/llm`);
+      return response.data;
     },
   });
 }
@@ -101,20 +96,8 @@ export function useUpdateLLMSettings() {
 
   return useMutation({
     mutationFn: async (settings: LLMSettingsUpdate) => {
-      const response = await fetch(`${API_BASE_URL}/llm`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(settings),
-      });
-
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || 'Failed to update LLM settings');
-      }
-
-      return response.json();
+      const response = await apiClient.put(`${API_PATH}/llm`, settings);
+      return response.data;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['settings'] });
@@ -126,16 +109,8 @@ export function useUpdateLLMSettings() {
 export function useReloadCategorizationRules() {
   return useMutation({
     mutationFn: async () => {
-      const response = await fetch(`${API_BASE_URL}/categorization/reload-rules`, {
-        method: 'POST',
-      });
-
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || 'Failed to reload rules');
-      }
-
-      return response.json();
+      const response = await apiClient.post(`${API_PATH}/categorization/reload-rules`);
+      return response.data;
     },
   });
 }
@@ -144,16 +119,8 @@ export function useReloadCategorizationRules() {
 export function useTestLLMConnection() {
   return useMutation({
     mutationFn: async () => {
-      const response = await fetch(`${API_BASE_URL}/llm/test`, {
-        method: 'POST',
-      });
-
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || 'Connection test failed');
-      }
-
-      return response.json();
+      const response = await apiClient.post(`${API_PATH}/llm/test`);
+      return response.data;
     },
   });
 }
@@ -163,12 +130,8 @@ export function useOpenRouterModels(enabled: boolean = true) {
   return useQuery<ModelInfo[]>({
     queryKey: ['settings', 'llm', 'openrouter', 'models'],
     queryFn: async () => {
-      const response = await fetch(`${API_BASE_URL}/llm/providers/openrouter/models`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch OpenRouter models');
-      }
-      const data = await response.json();
-      return data.models || [];
+      const response = await apiClient.get(`${API_PATH}/llm/providers/openrouter/models`);
+      return response.data.models || [];
     },
     staleTime: 5 * 60 * 1000, // Cache for 5 minutes
     retry: 1,
@@ -181,12 +144,8 @@ export function useOllamaModels(enabled: boolean = true) {
   return useQuery<ModelInfo[]>({
     queryKey: ['settings', 'llm', 'ollama', 'models'],
     queryFn: async () => {
-      const response = await fetch(`${API_BASE_URL}/llm/providers/ollama/models`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch Ollama models');
-      }
-      const data = await response.json();
-      return data.models || [];
+      const response = await apiClient.get(`${API_PATH}/llm/providers/ollama/models`);
+      return response.data.models || [];
     },
     staleTime: 5 * 60 * 1000, // Cache for 5 minutes
     retry: 1,
