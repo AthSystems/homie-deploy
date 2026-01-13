@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Wallet, TrendingUp, Upload, Tag, Users, Settings, ListChecks, Brain, Zap } from "lucide-react";
+import { Home, Wallet, TrendingUp, Upload, Tag, Users, Settings, ListChecks, Brain, Zap, BarChart3 } from "lucide-react";
 
 const navItems = [
   { name: "Home", href: "/", icon: Home },
   { name: "Accounts", href: "/accounts", icon: Wallet },
   { name: "Transactions", href: "/transactions", icon: TrendingUp },
+  { name: "Analytics", href: "/analytics", icon: BarChart3 },
   { name: "Staging", href: "/staging", icon: Upload },
   { name: "Categories", href: "/categories", icon: Tag },
   { name: "Owners", href: "/owners", icon: Users },

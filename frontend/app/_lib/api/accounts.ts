@@ -47,7 +47,78 @@ export const accountsApi = {
   delete: async (id: number): Promise<void> => {
     await apiClient.delete(`/accounts/${id}`);
   },
+
+  reconcileBalance: async (
+    id: number,
+    asOfDate: string,
+    knownBalance: number
+  ): Promise<ReconcileBalanceResponse> => {
+    const { data } = await apiClient.post(`/accounts/${id}/reconcile-balance`, {
+      asOfDate,
+      knownBalance,
+    });
+    return data;
+  },
+
+  getBalanceAtDate: async (
+    id: number,
+    asOfDate: string
+  ): Promise<BalanceAtDateResponse> => {
+    const { data } = await apiClient.get(`/accounts/${id}/balance-at-date`, {
+      params: { asOfDate },
+    });
+    return data;
+  },
+
+  recalculateBalance: async (id: number): Promise<RecalculateBalanceResponse> => {
+    const { data } = await apiClient.post(`/accounts/${id}/recalculate-balance`);
+    return data;
+  },
+
+  recalculateAllBalances: async (): Promise<RecalculateAllBalancesResponse> => {
+    const { data } = await apiClient.post("/accounts/recalculate-all-balances");
+    return data;
+  },
 };
+
+// Response types for reconciliation
+export interface ReconcileBalanceResponse {
+  accountId: number;
+  asOfDate: string;
+  knownBalance: number;
+  previousInitialBalance: number;
+  newInitialBalance: number;
+  transactionSumToDate: number;
+  previousBalance: number;
+  newBalance: number;
+  account: Account;
+}
+
+export interface BalanceAtDateResponse {
+  accountId: number;
+  accountName: string;
+  asOfDate: string;
+  initialBalance: number;
+  transactionSumToDate: number;
+  calculatedBalanceAtDate: number;
+  transactionCountToDate: number;
+  transactionSumAfterDate: number;
+  transactionCountAfterDate: number;
+  currentBalance: number;
+}
+
+export interface RecalculateBalanceResponse {
+  accountId: number;
+  previousBalance: number;
+  newBalance: number;
+  transactionSum: number;
+  account: Account;
+}
+
+export interface RecalculateAllBalancesResponse {
+  accountsUpdated: number;
+  results: RecalculateBalanceResponse[];
+}
 
 // Hooks
 export function useAccounts() {
@@ -102,6 +173,52 @@ export function useDeleteAccount() {
     mutationFn: accountsApi.delete,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: accountKeys.lists() });
+    },
+  });
+}
+
+export function useReconcileBalance() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({
+      id,
+      asOfDate,
+      knownBalance,
+    }: {
+      id: number;
+      asOfDate: string;
+      knownBalance: number;
+    }) => accountsApi.reconcileBalance(id, asOfDate, knownBalance),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: accountKeys.all });
+    },
+  });
+}
+
+export function useBalanceAtDate(id: number, asOfDate: string | null) {
+  return useQuery({
+    queryKey: [...accountKeys.detail(id), "balanceAtDate", asOfDate],
+    queryFn: () => accountsApi.getBalanceAtDate(id, asOfDate!),
+    enabled: !!id && !!asOfDate,
+  });
+}
+
+export function useRecalculateBalance() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: accountsApi.recalculateBalance,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: accountKeys.all });
+    },
+  });
+}
+
+export function useRecalculateAllBalances() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: accountsApi.recalculateAllBalances,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: accountKeys.all });
     },
   });
 }

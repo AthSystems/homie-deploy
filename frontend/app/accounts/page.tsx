@@ -1,8 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Edit2, Trash2, Wallet, XCircle } from "lucide-react";
-import { useAccounts, useCreateAccount, useUpdateAccount, useDeleteAccount, useCloseAccount } from "../_lib/api/accounts";
+import { Plus, Edit2, Trash2, Wallet, XCircle, Calculator, RefreshCw } from "lucide-react";
+import {
+  useAccounts,
+  useCreateAccount,
+  useUpdateAccount,
+  useDeleteAccount,
+  useCloseAccount,
+  useReconcileBalance,
+  useBalanceAtDate,
+  useRecalculateAllBalances,
+} from "../_lib/api/accounts";
 import { useOwners } from "../_lib/api/owners";
 import { Button } from "../_components/Button";
 import type { Account, AccountType } from "../_lib/types";
@@ -21,6 +30,8 @@ export default function AccountsPage() {
   const { data: accounts, isLoading } = useAccounts();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingAccount, setEditingAccount] = useState<Account | null>(null);
+  const [reconcileAccount, setReconcileAccount] = useState<Account | null>(null);
+  const recalculateAllBalances = useRecalculateAllBalances();
 
   if (isLoading) {
     return (
@@ -39,15 +50,25 @@ export default function AccountsPage() {
             Manage your financial accounts
           </p>
         </div>
-        <Button
-          onClick={() => {
-            setEditingAccount(null);
-            setIsDialogOpen(true);
-          }}
-        >
-          <Plus className="w-4 h-4 mr-2" />
-          Add Account
-        </Button>
+        <div className="flex space-x-3">
+          <Button
+            variant="secondary"
+            onClick={() => recalculateAllBalances.mutate()}
+            disabled={recalculateAllBalances.isPending}
+          >
+            <RefreshCw className={`w-4 h-4 mr-2 ${recalculateAllBalances.isPending ? "animate-spin" : ""}`} />
+            Recalculate All
+          </Button>
+          <Button
+            onClick={() => {
+              setEditingAccount(null);
+              setIsDialogOpen(true);
+            }}
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            Add Account
+          </Button>
+        </div>
       </div>
 
       {accounts && accounts.length === 0 ? (
@@ -74,6 +95,7 @@ export default function AccountsPage() {
                 setEditingAccount(account);
                 setIsDialogOpen(true);
               }}
+              onReconcile={() => setReconcileAccount(account)}
             />
           ))}
         </div>
@@ -88,11 +110,26 @@ export default function AccountsPage() {
           }}
         />
       )}
+
+      {reconcileAccount && (
+        <ReconcileDialog
+          account={reconcileAccount}
+          onClose={() => setReconcileAccount(null)}
+        />
+      )}
     </div>
   );
 }
 
-function AccountCard({ account, onEdit }: { account: Account; onEdit: () => void }) {
+function AccountCard({
+  account,
+  onEdit,
+  onReconcile,
+}: {
+  account: Account;
+  onEdit: () => void;
+  onReconcile: () => void;
+}) {
   const deleteAccount = useDeleteAccount();
   const closeAccount = useCloseAccount();
 
@@ -125,8 +162,16 @@ function AccountCard({ account, onEdit }: { account: Account; onEdit: () => void
         </div>
         <div className="flex space-x-2">
           <button
+            onClick={onReconcile}
+            className="p-2 text-gray-600 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-400"
+            title="Reconcile Balance"
+          >
+            <Calculator className="w-4 h-4" />
+          </button>
+          <button
             onClick={onEdit}
             className="p-2 text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+            title="Edit Account"
           >
             <Edit2 className="w-4 h-4" />
           </button>
@@ -138,6 +183,7 @@ function AccountCard({ account, onEdit }: { account: Account; onEdit: () => void
                 }
               }}
               className="p-2 text-gray-600 hover:text-orange-600 dark:text-gray-400 dark:hover:text-orange-400"
+              title="Close Account"
             >
               <XCircle className="w-4 h-4" />
             </button>
@@ -149,6 +195,7 @@ function AccountCard({ account, onEdit }: { account: Account; onEdit: () => void
               }
             }}
             className="p-2 text-gray-600 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400"
+            title="Delete Account"
           >
             <Trash2 className="w-4 h-4" />
           </button>
@@ -376,6 +423,148 @@ function AccountDialog({ account, onClose }: { account: Account | null; onClose:
               disabled={ownerIds.length === 0}
             >
               {account ? "Update" : "Create"}
+            </Button>
+            <Button type="button" variant="secondary" onClick={onClose} className="flex-1">
+              Cancel
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function ReconcileDialog({ account, onClose }: { account: Account; onClose: () => void }) {
+  const [asOfDate, setAsOfDate] = useState(format(new Date(), "yyyy-MM-dd"));
+  const [knownBalance, setKnownBalance] = useState("");
+  const reconcileBalance = useReconcileBalance();
+  const { data: balancePreview, isLoading: previewLoading } = useBalanceAtDate(account.id, asOfDate);
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: account.currency,
+    }).format(amount);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await reconcileBalance.mutateAsync({
+      id: account.id,
+      asOfDate,
+      knownBalance: parseFloat(knownBalance),
+    });
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-y-auto">
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-full max-w-lg my-8">
+        <h2 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
+          Reconcile Balance
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          Set the known balance at a specific date. The system will adjust the initial balance
+          so that the calculated balance at that date matches your input.
+        </p>
+
+        <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4 mb-4">
+          <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
+            {account.name}
+          </h3>
+          <div className="text-sm text-blue-800 dark:text-blue-200 space-y-1">
+            <div className="flex justify-between">
+              <span>Current Balance:</span>
+              <span className="font-mono">{formatCurrency(account.balance)}</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Initial Balance:</span>
+              <span className="font-mono">{formatCurrency(account.initialBalance)}</span>
+            </div>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              As of Date *
+            </label>
+            <input
+              type="date"
+              value={asOfDate}
+              onChange={(e) => setAsOfDate(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              required
+            />
+          </div>
+
+          {balancePreview && !previewLoading && (
+            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4">
+              <h4 className="font-medium text-gray-900 dark:text-white mb-2">
+                Balance Preview at {asOfDate}
+              </h4>
+              <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                <div className="flex justify-between">
+                  <span>Calculated Balance:</span>
+                  <span className="font-mono font-semibold text-gray-900 dark:text-white">
+                    {formatCurrency(balancePreview.calculatedBalanceAtDate)}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Transactions to date:</span>
+                  <span>{balancePreview.transactionCountToDate}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Transactions after date:</span>
+                  <span>{balancePreview.transactionCountAfterDate}</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Known Balance at Date *
+            </label>
+            <input
+              type="number"
+              step="0.01"
+              value={knownBalance}
+              onChange={(e) => setKnownBalance(e.target.value)}
+              placeholder="Enter actual balance from bank statement"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              required
+            />
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              Enter the actual balance from your bank statement at the selected date.
+            </p>
+          </div>
+
+          {knownBalance && balancePreview && (
+            <div className="bg-yellow-50 dark:bg-yellow-900/30 rounded-lg p-4">
+              <h4 className="font-medium text-yellow-900 dark:text-yellow-100 mb-1">
+                Adjustment Preview
+              </h4>
+              <p className="text-sm text-yellow-800 dark:text-yellow-200">
+                Difference:{" "}
+                <span className="font-mono font-semibold">
+                  {formatCurrency(parseFloat(knownBalance) - balancePreview.calculatedBalanceAtDate)}
+                </span>
+              </p>
+              <p className="text-xs text-yellow-700 dark:text-yellow-300 mt-1">
+                The initial balance will be adjusted by this amount.
+              </p>
+            </div>
+          )}
+
+          <div className="flex space-x-3 pt-4">
+            <Button
+              type="submit"
+              className="flex-1"
+              isLoading={reconcileBalance.isPending}
+              disabled={!knownBalance}
+            >
+              Reconcile
             </Button>
             <Button type="button" variant="secondary" onClick={onClose} className="flex-1">
               Cancel
