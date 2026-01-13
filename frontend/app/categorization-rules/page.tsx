@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { DataTable, Column } from "../_components/DataTable";
 import {useSubcategories} from "@/app/_lib/api/subcategories";
 import {Subcategory} from "@/app/_lib/types";
-import { API_BASE_URL } from "@/app/_lib/api/client";
 
 // Types matching backend structure
 type Criterion =
@@ -109,7 +108,7 @@ export default function CategorizationRulesPage() {
   const loadRules = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/categorization/rules/v2`);
+      const response = await fetch("http://localhost:8080/api/categorization/rules/v2");
       const data = await response.json();
       setRulesFile(data);
     } catch (error) {
@@ -123,7 +122,7 @@ export default function CategorizationRulesPage() {
     if (!confirm("Are you sure you want to delete this rule?")) return;
 
     try {
-      const response = await fetch(`${API_BASE_URL}/categorization/rules/v2/${id}`, {
+      const response = await fetch(`http://localhost:8080/api/categorization/rules/v2/${id}`, {
         method: "DELETE",
       });
       const data = await response.json();
@@ -136,7 +135,7 @@ export default function CategorizationRulesPage() {
   const handleToggleEnabled = async (rule: Rule) => {
     try {
       const updatedRule = { ...rule, enabled: !rule.enabled };
-      const response = await fetch(`${API_BASE_URL}/categorization/rules/v2/${rule.id}`, {
+      const response = await fetch(`http://localhost:8080/api/categorization/rules/v2/${rule.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedRule),
@@ -174,8 +173,8 @@ export default function CategorizationRulesPage() {
     try {
       const isNewRule = !(rulesFile?.rules ?? []).some((r) => r.id === rule.id);
       const url = isNewRule
-        ? `${API_BASE_URL}/categorization/rules/v2`
-        : `${API_BASE_URL}/categorization/rules/v2/${rule.id}`;
+        ? "http://localhost:8080/api/categorization/rules/v2"
+        : `http://localhost:8080/api/categorization/rules/v2/${rule.id}`;
       const method = isNewRule ? "POST" : "PUT";
 
       const response = await fetch(url, {

@@ -1,4 +1,4 @@
-import { apiClient, API_BASE_URL } from "./client";
+import { apiClient } from "./client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { CategorizationCandidate } from "../types";
 
@@ -197,7 +197,8 @@ export const streamCategorizationSuggestions = async (
   onComplete: (progress: CategorizationProgress) => void,
   onError: (error: string) => void
 ): Promise<void> => {
-  const url = `${API_BASE_URL}/staging/categorization/suggest-stream`;
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api";
+  const url = `${baseUrl}/staging/categorization/suggest-stream`;
 
   try {
     const response = await fetch(url, {

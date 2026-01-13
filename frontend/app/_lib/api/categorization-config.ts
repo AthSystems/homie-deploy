@@ -1,7 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { apiClient } from './client';
 
-const API_PATH = '/categorization/config';
+const API_BASE_URL = 'http://localhost:8080/api/categorization/config';
 
 export interface StrategyOption {
   value: string;
@@ -18,8 +17,11 @@ export function useCategorizationStrategy() {
   return useQuery<StrategyConfig>({
     queryKey: ['categorization-strategy'],
     queryFn: async () => {
-      const response = await apiClient.get(`${API_PATH}/strategy`);
-      return response.data;
+      const response = await fetch(`${API_BASE_URL}/strategy`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch categorization strategy');
+      }
+      return response.json();
     },
   });
 }
@@ -29,8 +31,20 @@ export function useUpdateCategorizationStrategy() {
 
   return useMutation({
     mutationFn: async (strategy: string) => {
-      const response = await apiClient.put(`${API_PATH}/strategy`, { strategy });
-      return response.data;
+      const response = await fetch(`${API_BASE_URL}/strategy`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ strategy }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to update strategy');
+      }
+
+      return response.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['categorization-strategy'] });

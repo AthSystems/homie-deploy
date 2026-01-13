@@ -1,5 +1,5 @@
 import {useMemo, useState} from "react";
-import { Sparkles } from "lucide-react";
+import { Sparkles, AlertCircle } from "lucide-react";
 import { Button } from "../../_components/Button";
 import { useQueryClient } from "@tanstack/react-query";
 import {
@@ -11,6 +11,7 @@ import {
 } from "../../_lib/api/categorization";
 import {StagingTransaction, CategorizationCandidate, Account} from "../../_lib/types";
 import { TransactionCategorizationGroup } from "./TransactionCategorizationGroup";
+import { ManualCategorizationCard } from "./ManualCategorizationCard";
 import { StrategySelector } from "./StrategySelector";
 
 interface CategorizationTabProps {
@@ -112,6 +113,14 @@ export function CategorizationTab({ transactionMap, accounts }: CategorizationTa
     return acc;
   }, {} as Record<number, CategorizationCandidate[]>);
 
+  // Find uncategorized transactions without any pending candidates
+  const uncategorizedWithoutCandidates = useMemo(() => {
+    const txIdsWithCandidates = new Set(Object.keys(groupedCandidates).map(Number));
+    return Array.from(transactionMap.values()).filter(
+      (tx) => !tx.categorized && !txIdsWithCandidates.has(tx.id)
+    );
+  }, [transactionMap, groupedCandidates]);
+
     const paginatedEntries = useMemo(() => {
         const entries = Object.entries(groupedCandidates);
         const start = (page - 1) * PAGE_SIZE;
@@ -187,6 +196,30 @@ export function CategorizationTab({ transactionMap, accounts }: CategorizationTa
             </div>
         )}
       </div>
+
+      {/* Uncategorized Transactions Without Suggestions */}
+      {uncategorizedWithoutCandidates.length > 0 && (
+        <div className="space-y-4">
+          <div className="flex items-center gap-2">
+            <AlertCircle className="w-5 h-5 text-amber-500" />
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              Needs Manual Categorization ({uncategorizedWithoutCandidates.length})
+            </h3>
+          </div>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            These transactions have no suggested categories. You can assign categories manually.
+          </p>
+          <div className="space-y-3">
+            {uncategorizedWithoutCandidates.map((transaction) => (
+              <ManualCategorizationCard
+                key={transaction.id}
+                transaction={transaction}
+                accounts={accounts}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
