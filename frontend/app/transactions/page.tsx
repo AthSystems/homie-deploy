@@ -150,6 +150,11 @@ export default function TransactionsPage() {
         return paginatedTransactions.reduce((sum, tx) => sum + tx.amount, 0);
     }, [paginatedTransactions]);
 
+    // Calculate sum of all filtered transactions
+    const totalAmountSum = useMemo(() => {
+        return transactions.reduce((sum, tx) => sum + tx.amount, 0);
+    }, [transactions]);
+
     const formatAmount = (amount: number, type: TransactionType) => {
         const formatted = Math.abs(amount).toFixed(2);
         const color =
@@ -525,11 +530,19 @@ export default function TransactionsPage() {
                         <div className="text-sm text-gray-600 dark:text-gray-400">
                             Showing {paginatedTransactions.length} of {transactions.length} transactions
                         </div>
-                        <div className="text-sm font-medium">
-                            <span className="text-gray-600 dark:text-gray-400 mr-2">Page Total:</span>
-                            <span className={pageAmountSum >= 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}>
-                                {pageAmountSum >= 0 ? "+" : ""}{pageAmountSum.toFixed(2)}
-                            </span>
+                        <div className="flex items-center gap-6 text-sm font-medium">
+                            <div>
+                                <span className="text-gray-600 dark:text-gray-400 mr-2">Page Total:</span>
+                                <span className={pageAmountSum >= 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}>
+                                    {pageAmountSum >= 0 ? "+$" : "-$"}{Math.abs(pageAmountSum).toFixed(2)}
+                                </span>
+                            </div>
+                            <div>
+                                <span className="text-gray-600 dark:text-gray-400 mr-2">Filtered Total:</span>
+                                <span className={totalAmountSum >= 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}>
+                                    {totalAmountSum >= 0 ? "+$" : "-$"}{Math.abs(totalAmountSum).toFixed(2)}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 }
